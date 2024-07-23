@@ -1,5 +1,5 @@
 #Cache
 \__pycache__
 #Environments
-\ENV
+ENV
 .env

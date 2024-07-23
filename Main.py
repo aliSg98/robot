@@ -3,7 +3,7 @@ from src.ConnexionPostgress import ConnexionPostgress
 def main():
     database = ConnexionPostgress()
     database.createTable()
-    database.insert()    
+    #database.insert()    
     database.closeConexion()
 
 
