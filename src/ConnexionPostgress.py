@@ -30,7 +30,7 @@ class ConnexionPostgress:
         self._cursor.execute(sql_create)
         self._conexion.commit()
 
-    """Hacer insert en la tabla"""
+    """Hacer insert en la tabla pidiendo los datos al usuario"""
     def insert (self):
         sql = 'INSERT INTO robot(name_robot,status_creation,status_pdf,path_pdf,status_final) values (%s,%s,%s,%s,%s)'
         nombre = input("Ingrese nombre robot: ")
