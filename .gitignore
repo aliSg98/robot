@@ -3,3 +3,4 @@
 #Environments
 ENV/
 .env
+ENV\.env
