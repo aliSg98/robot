@@ -26,12 +26,10 @@ def robot_python():
 
 """Abrir pagina para hacer pedidos de robots"""
 def open_robot_order_website():
-    """Navigates to the given URL"""
     browser.goto("https://robotsparebinindustries.com/#/robot-order")
 
 """Crear lista de diccionarios con los datos del csv orders.csv"""
 def get_orders():
-    """Downloads csv file from the given URL"""
     http = HTTP()
     http.download(url="https://robotsparebinindustries.com/orders.csv", overwrite=True)
 
@@ -78,7 +76,6 @@ def fill_the_form(orders):
 
 """Hago screenshot del robot"""
 def screenshot_robot(order_number):
-    """Take a screenshot of the page"""
     page = browser.page()
     page.screenshot(path=r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\Robot-{order_number}.png")
     screenshot = r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\Robot-{order_number}.png"
@@ -86,7 +83,6 @@ def screenshot_robot(order_number):
 
 """Creo pdf"""
 def store_receipt_as_pdf(order_number):
-    """Export the data to a pdf file"""
     page = browser.page()
     results_html = page.locator("#receipt").inner_html()
     pdf = PDF()
