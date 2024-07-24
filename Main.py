@@ -1,21 +1,30 @@
 from src.ConnexionPostgress import ConnexionPostgress
+from src.ReportExcel import ReportExcel
 
 def main():
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()
-
     """Elegir si quieres crear la tabla o hacer un insert con los datos que quieras"""
-    num = int(input("Ingrese 1 para Crear tabla, 2 para hacer INSERT"))    
-    # match case
+    num = int(input("""Ingrese 1 para Crear tabla en base de datos, 
+                    2 para hacer INSERT a la base de datos,  
+                    3 para crear excel,
+                    """))    
+    #match case
     match num:
         case num if num == 1:
-            database.createTable()
+            #create
+            database.createTable()   
+            database.closeConexion()           
         case num if num == 2:
-            database.insert() 
+            #insert
+            database.insert()
+            database.closeConexion()              
+        case num if num == 3:
+            #Crear excel
+            excel = ReportExcel()
         case _:
             print("Error") 
-    """Cerrar base de datos"""
-    database.closeConexion()
+
 
 
 if(__name__ == '__main__'):

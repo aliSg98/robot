@@ -29,6 +29,7 @@ class ConnexionPostgress:
         )"""
         self._cursor.execute(sql_create)
         self._conexion.commit()
+        print("Tabla creada ")
 
     """Hacer insert en la tabla pidiendo los datos al usuario"""
     def insert (self):
@@ -43,6 +44,7 @@ class ConnexionPostgress:
         self._cursor.execute(sql,datos)
         #guardar datos
         self._conexion.commit()
+        print("Datos insertados ")
 
     """Cerrar conexion"""
     def closeConexion(self):
