@@ -1,5 +1,7 @@
+import os
 from src.ConnexionPostgress import ConnexionPostgress
 from src.ReportExcel import ReportExcel
+from src.Log import Log
 
 def main():
     """Conectarse a la base de datos"""

@@ -1,4 +1,5 @@
 import psycopg2
+import Log as log
 
 class ConnexionPostgress:
     """Constructor que inicia conexion a base de datos"""

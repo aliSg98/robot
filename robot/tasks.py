@@ -1,28 +1,38 @@
 from robocorp.tasks import task
-from robocorp import browser, vault
+from robocorp import browser
 from RPA.HTTP import HTTP
 from RPA.Tables import Tables
 import csv
 from RPA.PDF import PDF
 from RPA.Archive import Archive
+from RPA.Browser import Browser
+import time
 
 @task
 def robot_python():
     """Crear robot, crear pdf, hacer captura, crear pdf final con la captura dentro"""
     browser.configure(
         slowmo=100,
-    )
+    )    
     open_robot_order_website()
     orders = get_orders()
     close_annoying_modal()    
-    for order in orders:
+    order_index = 0
+    total_orders = len(orders)
+    while order_index < total_orders:
+        order = orders[order_index]
         fill_the_form(order)
+        time.sleep(3)
         order_number = order["Order number"]
+        screenshot_robot(order_number)
+        time.sleep(2)
+        pdf_file = store_receipt_as_pdf(order_number)
+        time.sleep(1)
+        screenshot = screenshot_robot(order_number)
+        embed_screenshot_to_pdf(screenshot, pdf_file, order_number)
+        order_index +=1
         break
-    screenshot_robot(order_number)
-    pdf_file = store_receipt_as_pdf(order_number)
-    screenshot = screenshot_robot(order_number)
-    embed_screenshot_to_pdf(screenshot, pdf_file, order_number)
+           
 
 """Abrir pagina para hacer pedidos de robots"""
 def open_robot_order_website():
@@ -31,9 +41,10 @@ def open_robot_order_website():
 """Crear lista de diccionarios con los datos del csv orders.csv"""
 def get_orders():
     http = HTTP()
-    http.download(url="https://robotsparebinindustries.com/orders.csv", overwrite=True)
+    path_archivo = r"C:\Users\nasudre\Desktop\Robot\LOG\orders.csv"
+    http.download(url="https://robotsparebinindustries.com/orders.csv", overwrite=True, target_file = path_archivo)
 
-    archivo = "orders.csv"
+    archivo = path_archivo
     """Read csv"""
     orders_list = []
     with open(archivo, 'r') as csvfichero:
@@ -45,8 +56,11 @@ def get_orders():
 
 """Cerrar pop up"""
 def close_annoying_modal():
-    page = browser.page()
-    page.click("button:text('OK')")
+    try:
+        page = browser.page()
+        page.click("button:text('OK')")
+    except Exception as exception:
+        print(f"Error al cerrar pop up{exception}")   
 
 """Rellenar formulario con datos del csv"""
 def fill_the_form(orders):
@@ -101,3 +115,8 @@ def embed_screenshot_to_pdf(screenshot, pdf_file, order_number):
 
     )
     pdf.close_all_pdfs()
+
+def click_other_robot():
+    page = browser.page()
+    page.click('//*[@id="order-another" and @type="submit"]')
+
