@@ -1,5 +1,4 @@
 import psycopg2
-import Logger as log
 
 class ConnexionPostgress:
     """Constructor que inicia conexion a base de datos"""
@@ -13,13 +12,13 @@ class ConnexionPostgress:
                 database = 'mydatabase'
                 
             )
-            print("Conexion correcta")                    
+            print("Conexion correcta")                  
 
         except Exception as exception:
             print(exception)
     
     """Crear tabla"""
-    def createTable(self):
+    def createTable(self, logger):
         self._cursor = self._conexion.cursor()        
         sql_create = """CREATE TABLE IF NOT EXISTS robot(
             name_robot TEXT PRIMARY KEY,
@@ -30,10 +29,12 @@ class ConnexionPostgress:
         )"""
         self._cursor.execute(sql_create)
         self._conexion.commit()
+        logger.setMessage("Tabla creada",'info')
         print("Tabla creada ")
 
     """Hacer insert en la tabla pidiendo los datos al usuario"""
-    def insert (self):
+    def insert (self,logger):
+        self._cursor = self._conexion.cursor()
         sql = 'INSERT INTO robot(name_robot,status_creation,status_pdf,path_pdf,status_final) values (%s,%s,%s,%s,%s)'
         nombre = input("Ingrese nombre robot: ")
         status = input("Ingrese estado de creacion: ")
@@ -45,10 +46,14 @@ class ConnexionPostgress:
         self._cursor.execute(sql,datos)
         #guardar datos
         self._conexion.commit()
+        logger.setMessage("Datos insertados a la base de datos",'info')
         print("Datos insertados ")
 
     """Cerrar conexion"""
-    def closeConexion(self):
+    def closeConexion(self,logger):
+        self._cursor = self._conexion.cursor()
         self._cursor.close()
         self._conexion.close()
+        logger.setMessage("Conexion a la base de datos cerrada",'info')
+        print("Base de datos cerrada ")
 

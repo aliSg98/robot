@@ -1,0 +1,10 @@
+2024-07-25 17:59:35,017 - log - INFO - Tabla creada
+2024-07-25 17:59:35,017 - log - INFO - Conexion a base de datos cerrada
+2024-07-25 18:11:46,647 - log - INFO - Excel generado
+2024-07-25 18:15:17,553 - log - INFO - Tabla creada
+2024-07-25 18:16:45,721 - log - ERROR - Tabla creada
+2024-07-25 18:19:04,313 - log - INFO - Datos añadidos a la base de datos
+2024-07-25 18:22:00,314 - log - ERROR - Error
+2024-07-25 18:22:08,107 - log - INFO - Conexion a la base de datos cerrada
+2024-07-25 18:22:14,469 - log - INFO - Tabla creada
+2024-07-25 18:22:19,147 - log - INFO - Conexion a la base de datos cerrada

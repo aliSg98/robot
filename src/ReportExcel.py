@@ -5,7 +5,7 @@ from openpyxl.styles import PatternFill
 
 class ReportExcel:
     """creo fichero excel con sus columnas y algunos datos, y añado colores"""
-    def __init__(self):
+    def __init__(self,logger):
         self._path_xlsx = r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx"
 
         self._columnas = pandas.DataFrame({
@@ -37,9 +37,9 @@ class ReportExcel:
         color_fail = PatternFill(start_color="FF0000",end_color="FF0000",fill_type="solid")
 
         #columans que me interesa cambiar el color
-        columnas_cambiar = [2,3,5]
+        c = [2,3,5]
         for columna in res.iter_rows(min_row=2,max_row=res.max_row):
-            for col in columnas_cambiar:
+            for col in c:
                 #openpyxl usa indices base 1
                 celda=columna[col-1]
                 #paso a minusculas para que me coja independientemente sea mayus o minus
@@ -48,5 +48,5 @@ class ReportExcel:
                 elif cell_value in ['done']: celda.fill = color_done
                 elif cell_value in ['fail']: celda.fill = color_fail
         open_wb.save(self._path_xlsx)
-
+        logger.setMessage("Excel generado",'info')
         print('Excel generado')
