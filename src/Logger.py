@@ -1,6 +1,6 @@
 import logging
 
-class Log:
+class Logger:
     def __init__(self):
         self._logger = logging.getLogger('log')
         self._logger.setLevel(logging.INFO)
