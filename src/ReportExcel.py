@@ -9,11 +9,11 @@ class ReportExcel:
         self._path_xlsx = r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx"
 
         self._columnas = pandas.DataFrame({
-            "Name_robot": ["ABC8273", "ABC82763", "ABC82673","AHJD77"],
-            "Status_creation": ["DONE","DONE","WIP","FAIL"],
-            "Status_pdf": ["DONE","DONE","WIP","FAIL"],
-            "Path_pdf": ["/users/Ali","/users/Jorge","/users/Alex","users/Pedro"],
-            "Status_final": ["DONE","DONE","WIP","Fail"]
+            "Name_robot": [],
+            "Status_creation": [],
+            "Status_pdf": [],
+            "Path_pdf": [],
+            "Status_final": []
         })
         os.makedirs(os.path.dirname(self._path_xlsx),exist_ok=True)
         self._columnas.to_excel(self._path_xlsx, index = False, sheet_name='Robot1')
@@ -50,3 +50,19 @@ class ReportExcel:
         open_wb.save(self._path_xlsx)
         logger.setMessage("Excel generado",'info')
         print('Excel generado')
+
+    def addColums(self,path,sheet_name,datos):
+        excel = pandas.read_excel(path,sheet_name=sheet_name)
+        for nom_colum, datos_colum in datos.items():
+            if len(datos_colum) == len(excel):            
+                excel[nom_colum] = datos_colum
+                writter = pandas.ExcelWriter(path,engine='openpyxl', mode='a', if_sheet_exists='replace')
+                excel.to_excel(writter,sheet_name=sheet_name, index=False)
+            else:
+                print("Error al añadir datos")
+                
+
+           
+            
+
+        
