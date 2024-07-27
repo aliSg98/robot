@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 from src.Email import Email
 
 def main():    
-    cargarEnv()
     """Iniciar el logger"""
     logger = Logger()
     """Conectarse a la base de datos"""
@@ -49,17 +48,17 @@ def opcionesMatchCase(database,logger):
             ReportExcel.addColums(path_xlsx,'Robot1',datos)
         case num if num == 6:
             #Enviar email
-            mail = Email("ali_sg@outlook.com", r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx",r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt","Email con excel, y los logs").send_email(r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt",r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx")
+            mail = Email("nur-ali.sudre@soprasteria.com", r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx",r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt","Email con excel, y los logs").send_email()
             
         case _:
             logger.setMessage("Error",'error')
             print("Error, numero incorrecto") 
 
-def cargarEnv():
-    load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
-    global url_robot,url_orders
-    url_robot = os.getenv('URL_ROBOT')
-    url_orders = os.getenv('URL_ORDERS')
+#def cargarEnv():
+#    load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
+#    global url_robot,url_orders
+#    url_robot = os.getenv('URL_ROBOT')
+#    url_orders = os.getenv('URL_ORDERS')
 
 if(__name__ == '__main__'):
     main()

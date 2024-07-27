@@ -62,3 +62,13 @@
 2024-07-26 14:33:32,954 - log - INFO - Excel generado
 2024-07-26 14:35:32,057 - log - INFO - Excel generado
 2024-07-27 11:29:11,075 - log - INFO - Tabla creada
+2024-07-27 17:06:05,616 - log - ERROR - Error al abrir pagina de creacion de robots
+2024-07-27 17:06:06,003 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-27 17:07:04,784 - log - ERROR - Error al abrir pagina de creacion de robots
+2024-07-27 17:07:05,096 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-27 17:07:12,212 - log - ERROR - Error al cerrar pop up
+2024-07-27 17:14:52,162 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-27 17:15:47,117 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-27 17:16:32,127 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-27 17:22:46,409 - log - INFO - Tabla creada
+2024-07-27 17:30:14,646 - log - INFO - Excel generado
