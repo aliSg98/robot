@@ -54,11 +54,6 @@ def opcionesMatchCase(database,logger):
             logger.setMessage("Error",'error')
             print("Error, numero incorrecto") 
 
-#def cargarEnv():
-#    load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
-#    global url_robot,url_orders
-#    url_robot = os.getenv('URL_ROBOT')
-#    url_orders = os.getenv('URL_ORDERS')
 
 if(__name__ == '__main__'):
     main()

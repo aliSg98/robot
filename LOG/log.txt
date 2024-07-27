@@ -72,3 +72,17 @@
 2024-07-27 17:16:32,127 - log - INFO - Abriendo pagina de creacion de robots
 2024-07-27 17:22:46,409 - log - INFO - Tabla creada
 2024-07-27 17:30:14,646 - log - INFO - Excel generado
+2024-07-27 17:35:44,664 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-27 17:35:45,005 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-27 17:35:50,255 - log - INFO - Captura del robot hecha
+2024-07-27 17:35:57,610 - log - INFO - Pdf creado
+2024-07-27 17:35:58,832 - log - INFO - Captura del robot hecha
+2024-07-27 17:36:00,449 - log - INFO - Imagen introducida en pdf
+2024-07-27 17:36:02,475 - log - INFO - Robot 1 creado
+2024-07-27 17:37:06,597 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-27 17:37:06,770 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-27 17:37:11,866 - log - INFO - Captura del robot hecha
+2024-07-27 17:37:18,104 - log - INFO - Pdf creado
+2024-07-27 17:37:19,363 - log - INFO - Captura del robot hecha
+2024-07-27 17:37:19,853 - log - INFO - Imagen introducida en pdf
+2024-07-27 17:37:21,855 - log - INFO - Robot 1 creado
