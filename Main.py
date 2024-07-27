@@ -3,6 +3,7 @@ from src.ConnexionPostgress import ConnexionPostgress
 from src.ReportExcel import ReportExcel
 from src.Logger import Logger
 from dotenv import load_dotenv
+from src.Email import Email
 
 def main():    
     cargarEnv()
@@ -22,7 +23,7 @@ def opcionesMatchCase(database,logger):
                     3 para cerrar base de datos,
                     4 para crear excel vacio,
                     5 para añadir datos al excel,
-                    6 crear robot en RobotSelenium,
+                    6 para enviar email,
                     """))    
     #match case
     match num:
@@ -46,6 +47,10 @@ def opcionesMatchCase(database,logger):
                 "Status_final": ["DONE","DONE","WIP","Fail"]
             }
             ReportExcel.addColums(path_xlsx,'Robot1',datos)
+        case num if num == 6:
+            #Enviar email
+            mail = Email("ali_sg@outlook.com", r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx",r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt","Email con excel, y los logs").send_email(r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt",r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx")
+            
         case _:
             logger.setMessage("Error",'error')
             print("Error, numero incorrecto") 
