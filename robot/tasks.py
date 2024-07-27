@@ -9,6 +9,7 @@ from RPA.Browser import Browser
 import time
 import sys
 import os
+from dotenv import load_dotenv
 
 
 @task
@@ -17,6 +18,7 @@ def robot_python():
     browser.configure(
         slowmo=100,
     )
+    load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
     log = importLogger()
     open_robot_order_website(log)
     orders = get_orders(log)
@@ -58,8 +60,8 @@ def robot_python():
 
 """Abrir pagina para hacer pedidos de robots"""
 def open_robot_order_website(log):
-    try:    
-        browser.goto('https://robotsparebinindustries.com/#/robot-order')
+    try:            
+        browser.goto(os.getenv('URL_ROBOT'))
         log.setMessage("Abriendo pagina de creacion de robots", "info")
     except Exception:
         print("Error al abrir pagina de creacion de robots")
@@ -69,7 +71,7 @@ def open_robot_order_website(log):
 def get_orders(log):
     http = HTTP()
     path_archivo = r"C:\Users\nasudre\Desktop\Robot\LOG\orders.csv"
-    http.download(url="https://robotsparebinindustries.com/orders.csv", overwrite=True, target_file = path_archivo)
+    http.download(url=os.getenv('URL_ORDERS'), overwrite=True, target_file = path_archivo)
 
     archivo = path_archivo
     log.setMessage("Archivo orders.csv descargado correctamente", "info")
