@@ -92,3 +92,4 @@
 2024-07-28 13:49:34,443 - log - INFO - Excel generado con colores
 2024-07-28 13:55:32,675 - log - INFO - Excel generado con colores
 2024-07-28 13:56:30,943 - log - INFO - Excel generado con colores
+2024-07-28 14:19:48,770 - log - ERROR - Error

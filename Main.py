@@ -4,6 +4,7 @@ from src.ReportExcel import ReportExcel
 from src.Logger import Logger
 from dotenv import load_dotenv
 from src.Email import Email
+from src.RobotSelenium import RobotSelenium
 
 def main():    
     """Iniciar el logger"""
@@ -27,6 +28,7 @@ def opcionesMatchCase(database,logger,excel):
                     5 para añadir datos al excel,
                     6 para añadir colores al excel,
                     7 para enviar email,
+                    8 para crear robot en selenium,
                     """))    
     #match case
     match num:
@@ -62,7 +64,9 @@ def opcionesMatchCase(database,logger,excel):
             excel.changeColor()
         case num if num == 7:
             #Enviar email
-            Email("nur-ali.sudre@soprasteria.com", r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx",r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt","Email con excel, y los logs").send_email()
+            email = Email("nur-ali.sudre@soprasteria.com", r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx",r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt","Email con excel, y los logs").send_email()
+        case num if num == 8:
+            robot = RobotSelenium()
             
         case _:
             logger.setMessage("Error",'error')

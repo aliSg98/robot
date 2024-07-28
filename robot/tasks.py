@@ -22,7 +22,7 @@ def robot_python():
     log = importLogger()
     open_robot_order_website(log)
     orders = get_orders(log)
-    close_annoying_modal(log)
+    close_popup(log)
     close = 0        
     order_index = 0
     #poner aqui el numero de robots que queremos
@@ -31,7 +31,7 @@ def robot_python():
     try:
         while order_index < total_orders and num_robot > 0 and num_robot < total_orders:
             if close== 1:
-                close_annoying_modal(log)
+                close_popup(log)
             order = orders[order_index]
             fill_the_form(order,log)
             time.sleep(3)
@@ -85,7 +85,7 @@ def get_orders(log):
     return orders_list
 
 """Cerrar pop up"""
-def close_annoying_modal(log):
+def close_popup(log):
     try:
         page = browser.page()
         page.click("button:text('OK')")
