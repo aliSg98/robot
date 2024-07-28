@@ -86,3 +86,9 @@
 2024-07-27 17:37:19,363 - log - INFO - Captura del robot hecha
 2024-07-27 17:37:19,853 - log - INFO - Imagen introducida en pdf
 2024-07-27 17:37:21,855 - log - INFO - Robot 1 creado
+2024-07-28 12:31:01,812 - log - INFO - Excel generado
+2024-07-28 12:35:00,637 - log - INFO - Excel generado
+2024-07-28 13:46:27,014 - log - INFO - Excel generado con colores
+2024-07-28 13:49:34,443 - log - INFO - Excel generado con colores
+2024-07-28 13:55:32,675 - log - INFO - Excel generado con colores
+2024-07-28 13:56:30,943 - log - INFO - Excel generado con colores

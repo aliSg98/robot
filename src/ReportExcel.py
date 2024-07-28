@@ -1,27 +1,25 @@
-import pandas
+import pandas as pd
 import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
 class ReportExcel:
-    """creo fichero excel con sus columnas y algunos datos, y añado colores"""
-    def __init__(self,logger):
-        self._path_xlsx = r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx"
+    """crear fichero excel"""
+    def __init__(self, path_xlsx, logger):
+        self.path_xlsx = path_xlsx
+        try:
+            self.df = pd.read_excel(self.path_xlsx)  # Intenta leer el archivo existente
+        except FileNotFoundError:
+            self.df = pd.DataFrame()  # Si no existe, crea un DataFrame vacío
+        self.logger = logger
+       
 
-        self._columnas = pandas.DataFrame({
-            "Name_robot": [],
-            "Status_creation": [],
-            "Status_pdf": [],
-            "Path_pdf": [],
-            "Status_final": []
-        })
-        os.makedirs(os.path.dirname(self._path_xlsx),exist_ok=True)
-        self._columnas.to_excel(self._path_xlsx, index = False, sheet_name='Robot1')
-        
+    
+    def changeColor(self):
         #Cargar el fichero excel con openpyxl
-        open_wb = load_workbook(self._path_xlsx)
+        open_wb = load_workbook(self.path_xlsx)
         res = open_wb.active
-
+        
         #Definir color azul
         color = PatternFill(start_color="ADD8E6",end_color="ADD8E6",fill_type="solid")
 
@@ -29,7 +27,7 @@ class ReportExcel:
         for col in res[1]:
             col.fill = color
         #guardar excel con el nuevo color
-        open_wb.save(self._path_xlsx)
+        open_wb.save(self.path_xlsx)
 
         """Cambiar color segun sea wip -> amarillo, done --> verde, fail --> rojo"""
         color_wip = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
@@ -47,20 +45,25 @@ class ReportExcel:
                 if cell_value in ['wip']: celda.fill = color_wip
                 elif cell_value in ['done']: celda.fill = color_done
                 elif cell_value in ['fail']: celda.fill = color_fail
-        open_wb.save(self._path_xlsx)
-        logger.setMessage("Excel generado",'info')
-        print('Excel generado')
+        open_wb.save(self.path_xlsx)
+        self.logger.setMessage("Excel generado con colores",'info')
 
-    def addColums(self,path,sheet_name,datos):
-        excel = pandas.read_excel(path,sheet_name=sheet_name)
-        for nom_colum, datos_colum in datos.items():
-            if len(datos_colum) == len(excel):            
-                excel[nom_colum] = datos_colum
-                writter = pandas.ExcelWriter(path,engine='openpyxl', mode='a', if_sheet_exists='replace')
-                excel.to_excel(writter,sheet_name=sheet_name, index=False)
-            else:
-                print("Error al añadir datos")
-                
+    def create_excel(self, data):
+        self.df = pd.DataFrame(data)
+        os.makedirs(os.path.dirname(self.path_xlsx),exist_ok=True)
+        self.df.to_excel(self.path_xlsx, index=False, sheet_name='Robot1')
+
+
+    def add_data(self, new_data):
+        try:
+            old_df = pd.read_excel(self.path_xlsx)
+            new_df = pd.DataFrame(new_data)
+            self.df = pd.concat([old_df, new_df], ignore_index=True)            
+        except FileNotFoundError:
+            self.df = pd.DataFrame(new_data)
+            self.logger.setMessage("Excel no encontrado",'info')
+        self.df.to_excel(self.path_xlsx, index=False, sheet_name='Robot1')
+               
 
            
             

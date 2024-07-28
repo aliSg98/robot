@@ -11,18 +11,22 @@ def main():
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()
 
-    opcionesMatchCase(database,logger)    
-
-
-def opcionesMatchCase(database,logger):
     path_xlsx = r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx"
+    excel = ReportExcel(path_xlsx,logger)
+    
+
+    opcionesMatchCase(database,logger,excel)    
+
+
+def opcionesMatchCase(database,logger,excel):    
     """Elegir si quieres crear la tabla o hacer un insert con los datos que quieras"""
     num = int(input("""Ingrese 1 para Crear tabla en base de datos, 
                     2 para hacer INSERT a la base de datos,  
                     3 para cerrar base de datos,
-                    4 para crear excel vacio,
+                    4 para crear excel,
                     5 para añadir datos al excel,
-                    6 para enviar email,
+                    6 para añadir colores al excel,
+                    7 para enviar email,
                     """))    
     #match case
     match num:
@@ -36,19 +40,29 @@ def opcionesMatchCase(database,logger):
             database.closeConexion(logger) 
         case num if num == 4:
             #Crear excel
-            excel = ReportExcel(logger)
+            datos ={
+                "Name_robot": ["AFF665"],
+                "Status_creation": ["Fail"],
+                "Status_pdf": ["DONE"],
+                "Path_pdf": ["/users/admin"],
+                "Status_final": ["wip"]
+            }
+            excel.create_excel(datos)
+
         case num if num == 5:
             datos ={
-                "Name_robot": ["ABC8273", "ABC82763", "ABC82673","AHJD77"],
-                "Status_creation": ["DONE","DONE","WIP","FAIL"],
-                "Status_pdf": ["DONE","DONE","WIP","FAIL"],
-                "Path_pdf": ["/users/Ali","/users/Jorge","/users/Alex","users/Pedro"],
-                "Status_final": ["DONE","DONE","WIP","Fail"]
+                "Name_robot": ["Acc665"],
+                "Status_creation": ["WIP"],
+                "Status_pdf": ["WIP"],
+                "Path_pdf": ["/users/ali"],
+                "Status_final": ["WIP"]
             }
-            ReportExcel.addColums(path_xlsx,'Robot1',datos)
+            excel.add_data(datos)
         case num if num == 6:
+            excel.changeColor()
+        case num if num == 7:
             #Enviar email
-            mail = Email("nur-ali.sudre@soprasteria.com", r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx",r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt","Email con excel, y los logs").send_email()
+            Email("nur-ali.sudre@soprasteria.com", r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx",r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt","Email con excel, y los logs").send_email()
             
         case _:
             logger.setMessage("Error",'error')
