@@ -93,3 +93,102 @@
 2024-07-28 13:55:32,675 - log - INFO - Excel generado con colores
 2024-07-28 13:56:30,943 - log - INFO - Excel generado con colores
 2024-07-28 14:19:48,770 - log - ERROR - Error
+2024-07-28 20:57:29,224 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 20:57:29,472 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 20:57:34,557 - log - INFO - Captura del robot hecha
+2024-07-28 20:57:40,265 - log - INFO - Pdf creado
+2024-07-28 20:57:41,451 - log - INFO - Captura del robot hecha
+2024-07-28 20:57:41,482 - log - ERROR - Error al introducir imagen en pdf
+2024-07-28 20:57:43,492 - log - INFO - Robot 1 creado
+2024-07-28 20:59:06,911 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 20:59:07,071 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 20:59:12,213 - log - INFO - Captura del robot hecha
+2024-07-28 20:59:19,065 - log - ERROR - Error al crear pdf
+2024-07-28 20:59:20,398 - log - INFO - Captura del robot hecha
+2024-07-28 20:59:20,414 - log - ERROR - Error al introducir imagen en pdf
+2024-07-28 21:00:17,225 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 21:00:17,480 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 21:00:23,591 - log - INFO - Captura del robot hecha
+2024-07-28 21:00:28,613 - log - ERROR - Error al crear pdf
+2024-07-28 21:01:53,926 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 21:01:54,085 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 21:02:02,397 - log - INFO - Captura del robot hecha
+2024-07-28 21:02:07,905 - log - INFO - Pdf creado
+2024-07-28 21:02:11,053 - log - INFO - Captura del robot hecha
+2024-07-28 21:02:12,495 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:02:14,495 - log - INFO - Robot 1 creado
+2024-07-28 21:02:42,208 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 21:02:42,481 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 21:02:50,535 - log - INFO - Captura del robot hecha
+2024-07-28 21:02:55,996 - log - INFO - Pdf creado
+2024-07-28 21:02:59,138 - log - INFO - Captura del robot hecha
+2024-07-28 21:03:00,454 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:03:02,748 - log - INFO - Creando otro robot
+2024-07-28 21:03:04,755 - log - INFO - Robot 1 creado
+2024-07-28 21:04:53,640 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 21:04:53,755 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 21:05:01,808 - log - INFO - Captura del robot hecha
+2024-07-28 21:05:07,265 - log - INFO - Pdf creado
+2024-07-28 21:05:10,414 - log - INFO - Captura del robot hecha
+2024-07-28 21:05:11,681 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:05:13,964 - log - INFO - Creando otro robot
+2024-07-28 21:05:15,971 - log - INFO - Robot 1 creado
+2024-07-28 21:07:52,440 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 21:07:52,578 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 21:08:00,676 - log - INFO - Captura del robot hecha
+2024-07-28 21:08:06,125 - log - INFO - Pdf creado
+2024-07-28 21:08:09,253 - log - INFO - Captura del robot hecha
+2024-07-28 21:08:10,552 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:08:10,863 - log - INFO - Creando otro robot
+2024-07-28 21:08:12,876 - log - INFO - Robot_1 creado
+2024-07-28 21:08:20,088 - log - INFO - Captura del robot hecha
+2024-07-28 21:08:25,725 - log - INFO - Pdf creado
+2024-07-28 21:08:26,740 - log - ERROR - Error al hacer screenshot del robot
+2024-07-28 21:09:24,724 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 21:09:24,850 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 21:09:32,927 - log - INFO - Captura del robot hecha
+2024-07-28 21:09:38,523 - log - INFO - Pdf creado
+2024-07-28 21:09:41,699 - log - INFO - Captura del robot hecha
+2024-07-28 21:09:43,203 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:09:45,481 - log - INFO - Creando otro robot
+2024-07-28 21:09:47,491 - log - INFO - Robot_1 creado
+2024-07-28 21:09:56,533 - log - INFO - Captura del robot hecha
+2024-07-28 21:10:01,954 - log - INFO - Pdf creado
+2024-07-28 21:10:05,104 - log - INFO - Captura del robot hecha
+2024-07-28 21:10:06,222 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:10:08,235 - log - INFO - Robot_3 creado
+2024-07-28 21:10:38,373 - log - ERROR - Error al cerrar pop up
+2024-07-28 21:11:09,507 - log - ERROR - Error al completar el formulario
+2024-07-28 21:11:15,667 - log - INFO - Captura del robot hecha
+2024-07-28 21:11:21,023 - log - INFO - Pdf creado
+2024-07-28 21:11:24,169 - log - INFO - Captura del robot hecha
+2024-07-28 21:11:25,272 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:12:36,988 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 21:12:37,089 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 21:12:45,161 - log - INFO - Captura del robot hecha
+2024-07-28 21:12:50,654 - log - INFO - Pdf creado
+2024-07-28 21:12:53,795 - log - INFO - Captura del robot hecha
+2024-07-28 21:12:55,111 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:12:57,511 - log - INFO - Creando otro robot
+2024-07-28 21:12:59,521 - log - INFO - Robot_1 creado
+2024-07-28 21:13:08,558 - log - INFO - Captura del robot hecha
+2024-07-28 21:14:01,294 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 21:14:01,437 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 21:14:10,515 - log - INFO - Captura del robot hecha
+2024-07-28 21:14:15,975 - log - INFO - Pdf creado
+2024-07-28 21:14:19,119 - log - INFO - Captura del robot hecha
+2024-07-28 21:14:20,386 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:14:22,653 - log - INFO - Creando otro robot
+2024-07-28 21:14:24,658 - log - INFO - Robot_1 creado
+2024-07-28 21:14:34,758 - log - INFO - Captura del robot hecha
+2024-07-28 21:14:40,161 - log - INFO - Pdf creado
+2024-07-28 21:14:43,329 - log - INFO - Captura del robot hecha
+2024-07-28 21:14:44,460 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:14:47,471 - log - INFO - Robot_2 creado
+2024-07-28 21:15:25,660 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-28 21:15:25,762 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-28 21:15:34,834 - log - INFO - Captura del robot hecha
+2024-07-28 21:15:40,283 - log - INFO - Pdf creado
+2024-07-28 21:15:43,439 - log - INFO - Captura del robot hecha
+2024-07-28 21:15:44,770 - log - INFO - Imagen introducida en pdf
+2024-07-28 21:15:47,794 - log - INFO - Robot_1 creado

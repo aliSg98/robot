@@ -20,6 +20,7 @@ def robot_python():
     )
     load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
     log = importLogger()
+    name_robot = os.getenv('ROBOT_NAME')
     open_robot_order_website(log)
     orders = get_orders(log)
     close_popup(log)
@@ -32,26 +33,29 @@ def robot_python():
         while order_index < total_orders and num_robot > 0 and num_robot < total_orders:
             if close== 1:
                 close_popup(log)
+                time.sleep(1)
             order = orders[order_index]
+            time.sleep(1)
             fill_the_form(order,log)
             time.sleep(3)
             order_number = order["Order number"]
-            screenshot_robot(order_number,log)
-            time.sleep(2)
-            pdf_file = store_receipt_as_pdf(order_number,log)
             time.sleep(1)
-            screenshot = screenshot_robot(order_number,log)
-            embed_screenshot_to_pdf(screenshot, pdf_file, order_number,log)
+            screenshot_robot(order_number,log,name_robot)
+            time.sleep(2)
+            pdf_file = store_receipt_as_pdf(order_number,log,name_robot)
+            time.sleep(1)
+            screenshot = screenshot_robot(order_number,log,name_robot)
+            time.sleep(1)
+            embed_screenshot_to_pdf(screenshot, pdf_file, order_number,log,name_robot)
             time.sleep(2)
             if num_robot > 1:
                 click_other_robot(log)
-                time.sleep(2)
+                time.sleep(1)
                 close = 1
-                order_index +=1
-                num_robot = num_robot - 1
-            order_index +=1
+            time.sleep(1)              
             num_robot = num_robot - 1
-            log.setMessage(f"Robot {order_number} creado", "info")
+            order_index +=1
+            log.setMessage(f"Robot_{order_number} creado", "info")
             continue           
     except Exception as exception:
             print(exception)
@@ -121,11 +125,12 @@ def fill_the_form(orders,log):
         log.setMessage("Error al completar el formulario", "error")
 
 """Hago screenshot del robot"""
-def screenshot_robot(order_number,log):
+def screenshot_robot(order_number,log,name_robot):
     try:
         page = browser.page()
-        page.screenshot(path=r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\Robot-{order_number}.png")
-        screenshot = r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\Robot-{order_number}.png"
+        page.screenshot(path=r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\{name_robot}{order_number}.png")
+        time.sleep(2)
+        screenshot = r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\{name_robot}{order_number}.png"
         log.setMessage("Captura del robot hecha", "info")
         return screenshot
     except Exception:
@@ -133,14 +138,14 @@ def screenshot_robot(order_number,log):
         log.setMessage("Error al hacer screenshot del robot", "error")
 
 """Creo pdf"""
-def store_receipt_as_pdf(order_number,log):
+def store_receipt_as_pdf(order_number, log, name_robot):
     try:
         page = browser.page()
         time.sleep(3)
         results_html = page.locator("#receipt").inner_html()
         pdf = PDF()
-        pdf.html_to_pdf(results_html, r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\Robot-{order_number}.pdf")
-        pdf_final = r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\Robot-{order_number}.pdf"
+        pdf.html_to_pdf(results_html, r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\{name_robot}{order_number}.pdf")
+        pdf_final = r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\{name_robot}{order_number}.pdf"
         log.setMessage("Pdf creado", "info")
         return pdf_final
     except Exception:
@@ -148,14 +153,14 @@ def store_receipt_as_pdf(order_number,log):
         log.setMessage("Error al crear pdf", "error")
 
 """Meto screenshot en pdf"""
-def embed_screenshot_to_pdf(screenshot, pdf_file, order_number, log):
+def embed_screenshot_to_pdf(screenshot, pdf_file, order_number, log, name_robot):
     try:
         pdf = PDF()
         pdf.open_pdf(pdf_file)
         pdf.add_watermark_image_to_pdf(
             image_path = screenshot,
             source_path = pdf_file,
-            output_path=r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\Robot-{order_number}.pdf"
+            output_path=r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\{name_robot}{order_number}.pdf"
 
         )
         log.setMessage("Imagen introducida en pdf", "info")
