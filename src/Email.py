@@ -20,7 +20,7 @@ class Email:
     def send_email(self):
         load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
         sender_email = 'alisopra98@gmail.com'
-        password = os.getenv('PASSWORD_EMAIL')
+        password = 'llsm sclh rniw iylm'
         body = "Log y excel adjuntos"
         smtp_server = 'smtp.gmail.com'
         smtp_port = 587
