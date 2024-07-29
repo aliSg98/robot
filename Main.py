@@ -48,10 +48,10 @@ def main():
     robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
     
 
-    #opcionesMatchCase(database,logger,excel)    
+    #opcionesMatchCase(database,logger,excel,url_robot,url_orders,robot_name)    
 
 
-def opcionesMatchCase(database,logger,excel):    
+def opcionesMatchCase(database,logger,excel,url_robot,url_orders,robot_name):    
     """Elegir si quieres crear la tabla o hacer un insert con los datos que quieras"""
     num = int(input("""Ingrese 1 para Crear tabla en base de datos, 
                     2 para hacer INSERT a la base de datos,  
@@ -98,7 +98,7 @@ def opcionesMatchCase(database,logger,excel):
             #Enviar email
             email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
         case num if num == 8:
-            robot = RobotSelenium()
+            robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
             
         case _:
             logger.setMessage("Error",'error')
