@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Git Repo') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/aliSg98/robot.git'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/aliSg98/robot.git']])
             }
         }
         stage('Run Main') {

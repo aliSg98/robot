@@ -1,3 +1,5 @@
+import sys
+sys.path.append(r'C:\Users\nasudre\AppData\Local\Programs\Python\Python312\Lib\site-packages')
 import os
 from src.ConnexionPostgress import ConnexionPostgress
 from src.ReportExcel import ReportExcel
