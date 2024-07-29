@@ -23,23 +23,20 @@ def robot_python():
     log = importLogger()
     name_robot = os.getenv('ROBOT_NAME')
     open_robot_order_website(log)
-    orders = get_orders(log)
-    close_popup(log)
-    close = 0        
-    order_index = 0
+    orders = get_orders(log)        
     #numero de robots
     num_robot = param.num_robots
     try:
         for order_index in range(num_robot):
-            if close== 1:
-                close_popup(log)
-                time.sleep(2)
+            time.sleep(1)
+            close_popup(log)
+            time.sleep(1)
             order = orders[order_index]
-            time.sleep(1)
+            time.sleep(5)
             fill_the_form(order,log)
-            time.sleep(3)
+            time.sleep(5)
             order_number = order["Order number"]
-            time.sleep(1)
+            time.sleep(3)
             screenshot_robot(order_number,log,name_robot)
             time.sleep(2)
             pdf_file = store_receipt_as_pdf(order_number,log,name_robot)
@@ -48,11 +45,6 @@ def robot_python():
             time.sleep(1)
             embed_screenshot_to_pdf(screenshot, pdf_file, order_number,log,name_robot)
             time.sleep(2)
-            if num_robot > 1:
-                click_other_robot(log)
-                time.sleep(1)
-                close = 1
-            time.sleep(1)
             log.setMessage(f"Robot_{order_number} creado", "info")        
     except Exception as exception:
             print(exception)
@@ -114,7 +106,7 @@ def fill_the_form(orders,log):
         page.fill("xpath=//input[@placeholder='Enter the part number for the legs']", orders['Legs'])
         """Address"""
         page.fill("#address", orders["Address"])
-
+        time.sleep(2)
         return page.click('//*[@id="order" and @type="submit"]')
     
     except Exception as exception:
@@ -162,6 +154,7 @@ def embed_screenshot_to_pdf(screenshot, pdf_file, order_number, log, name_robot)
         )
         log.setMessage("Imagen introducida en pdf", "info")
         pdf.close_all_pdfs()
+        click_other_robot(log)
     except Exception:
         print("Error al introducir imagen en pdf")
         log.setMessage("Error al introducir imagen en pdf", "error")

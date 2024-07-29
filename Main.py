@@ -6,7 +6,7 @@ from src.ReportExcel import ReportExcel
 from src.Logger import Logger
 from dotenv import load_dotenv
 from src.Email import Email
-#from src.RobotSelenium import RobotSelenium
+from src.RobotSelenium import RobotSelenium
 from ParamsRobot import params
 
 def main():  
@@ -15,9 +15,6 @@ def main():
     robot_name = os.getenv('ROBOT_NAME')
     url_robot = os.getenv('URL_ROBOT')
     url_orders = os.getenv('URL_ORDERS')
-    email = params.email
-    xlsx = params.xlsx
-    log = params.log
 
     """Iniciar el logger"""
     logger = Logger()
@@ -46,8 +43,9 @@ def main():
     excel.add_data(datos)
     excel.changeColor()
     """Mail"""
-    email = Email(email, xlsx, log,"Email con excel, y los logs").send_email()
-    #robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
+    #email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
+    """Crear robot en selenium"""
+    robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
     
 
     #opcionesMatchCase(database,logger,excel)    
@@ -106,11 +104,7 @@ def opcionesMatchCase(database,logger,excel):
             logger.setMessage("Error",'error')
             print("Error, numero incorrecto") 
 
-def cargarEnv():
-    load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
-    robot_name = os.getenv('ROBOT_NAME')
-    url_robot = os.getenv('URL_ROBOT')
-    url_orders = os.getenv('URL_ORDERS')
+
 
 if(__name__ == '__main__'):
     main()
