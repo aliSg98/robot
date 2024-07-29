@@ -46,19 +46,24 @@ class ReportExcel:
                 elif cell_value in ['done']: celda.fill = color_done
                 elif cell_value in ['fail']: celda.fill = color_fail
         open_wb.save(self.path_xlsx)
+        print("Colores del exel cambiados ")
         self.logger.setMessage("Excel generado con colores",'info')
 
     def create_excel(self, data):
         self.df = pd.DataFrame(data)
         os.makedirs(os.path.dirname(self.path_xlsx),exist_ok=True)
         self.df.to_excel(self.path_xlsx, index=False, sheet_name='Robot1')
+        print("Excel creado sin datos ")
+        self.logger.setMessage("Excel creado sin datos ",'info')
 
 
     def add_data(self, new_data):
         try:
             old_df = pd.read_excel(self.path_xlsx)
             new_df = pd.DataFrame(new_data)
-            self.df = pd.concat([old_df, new_df], ignore_index=True)            
+            self.df = pd.concat([old_df, new_df], ignore_index=True) 
+            self.logger.setMessage("Datos añadidos al excel ",'info')     
+            print("Datos añadidos al excel ")      
         except FileNotFoundError:
             self.df = pd.DataFrame(new_data)
             self.logger.setMessage("Excel no encontrado",'info')

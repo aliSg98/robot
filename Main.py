@@ -5,6 +5,7 @@ from src.Logger import Logger
 from dotenv import load_dotenv
 from src.Email import Email
 from src.RobotSelenium import RobotSelenium
+from ParamsRobot import params
 
 def main():    
     """Iniciar el logger"""
@@ -12,9 +13,8 @@ def main():
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()
 
-    path_xlsx = r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx"
-
-    excel = ReportExcel(path_xlsx,logger)    
+    """Excel"""
+    excel = ReportExcel(params.xlsx,logger)    
 
     opcionesMatchCase(database,logger,excel)    
 
@@ -64,7 +64,7 @@ def opcionesMatchCase(database,logger,excel):
             excel.changeColor()
         case num if num == 7:
             #Enviar email
-            email = Email("nur-ali.sudre@soprasteria.com", r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx",r"C:\Users\nasudre\Desktop\Robot\LOG\log.txt","Email con excel, y los logs").send_email()
+            email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
         case num if num == 8:
             robot = RobotSelenium()
             
