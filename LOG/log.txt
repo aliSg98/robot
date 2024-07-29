@@ -271,3 +271,8 @@
 2024-07-29 15:42:35,861 - log - INFO - Imagen introducida en pdf
 2024-07-29 15:42:38,192 - log - INFO - Creando otro robot
 2024-07-29 15:42:40,205 - log - INFO - Robot_2 creado
+2024-07-29 15:45:44,763 - log - INFO - Tabla creada
+2024-07-29 15:45:44,763 - log - INFO - Conexion a la base de datos cerrada
+2024-07-29 15:45:44,911 - log - INFO - Excel creado sin datos 
+2024-07-29 15:45:44,926 - log - INFO - Datos añadidos al excel 
+2024-07-29 15:45:44,996 - log - INFO - Excel generado con colores

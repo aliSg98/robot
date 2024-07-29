@@ -4,7 +4,7 @@ from src.ReportExcel import ReportExcel
 from src.Logger import Logger
 from dotenv import load_dotenv
 from src.Email import Email
-from src.RobotSelenium import RobotSelenium
+#from src.RobotSelenium import RobotSelenium
 from ParamsRobot import params
 
 def main():  
