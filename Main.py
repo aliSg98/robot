@@ -7,7 +7,9 @@ from src.Email import Email
 from src.RobotSelenium import RobotSelenium
 from ParamsRobot import params
 
-def main():    
+def main():  
+    """Cargar .env"""
+    cargarEnv()  
     """Iniciar el logger"""
     logger = Logger()
     """Conectarse a la base de datos"""
@@ -34,6 +36,9 @@ def main():
             }
     excel.add_data(datos)
     excel.changeColor()
+    """Mail"""
+    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
+    #robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
     
 
     #opcionesMatchCase(database,logger,excel)    
@@ -92,9 +97,12 @@ def opcionesMatchCase(database,logger,excel):
             logger.setMessage("Error",'error')
             print("Error, numero incorrecto") 
 
-def sendEmail():
-    """Mail"""
-    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
+def cargarEnv():
+    load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
+    global robot_name, url_robot, url_orders 
+    robot_name = os.getenv('ROBOT_NAME')
+    url_robot = os.getenv('URL_ROBOT')
+    url_orders = os.getenv('URL_ORDERS')
 
 if(__name__ == '__main__'):
     main()

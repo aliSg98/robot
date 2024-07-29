@@ -29,12 +29,11 @@ def robot_python():
     order_index = 0
     #numero de robots
     num_robot = param.num_robots
-    total_orders = len(orders)
     try:
-        while order_index < total_orders and num_robot > 0 and num_robot < total_orders:
+        for order_index in range(num_robot):
             if close== 1:
                 close_popup(log)
-                time.sleep(1)
+                time.sleep(2)
             order = orders[order_index]
             time.sleep(1)
             fill_the_form(order,log)
@@ -53,11 +52,8 @@ def robot_python():
                 click_other_robot(log)
                 time.sleep(1)
                 close = 1
-            time.sleep(1)              
-            num_robot = num_robot - 1
-            order_index +=1
-            log.setMessage(f"Robot_{order_number} creado", "info")
-            continue           
+            time.sleep(1)
+            log.setMessage(f"Robot_{order_number} creado", "info")        
     except Exception as exception:
             print(exception)
             log.setMessage("Error al crear el robot", "error")
@@ -193,5 +189,6 @@ def importParams():
     sys.path.append(carpeta_params)
     from ParamsRobot import params
     return params
+
 
 
