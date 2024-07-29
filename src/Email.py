@@ -18,7 +18,7 @@ class Email:
 
 
     def send_email(self):
-        load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
+        #load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
         sender_email = 'alisopra98@gmail.com'
         password = 'llsm sclh rniw iylm'
         body = "Log y excel adjuntos"

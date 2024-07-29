@@ -34,8 +34,7 @@ def main():
             }
     excel.add_data(datos)
     excel.changeColor()
-    """Mail"""
-    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
+    
 
     #opcionesMatchCase(database,logger,excel)    
 
@@ -93,6 +92,9 @@ def opcionesMatchCase(database,logger,excel):
             logger.setMessage("Error",'error')
             print("Error, numero incorrecto") 
 
+def sendEmail():
+    """Mail"""
+    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
 
 if(__name__ == '__main__'):
     main()

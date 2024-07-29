@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Git Repo') {
             steps {
                 git 'https://github.com/aliSg98/robot.git'
             }
