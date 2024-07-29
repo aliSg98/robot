@@ -12,11 +12,32 @@ def main():
     logger = Logger()
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()
-
+    database.createTable(logger)
+    database.closeConexion(logger)
+    
     """Excel"""
-    excel = ReportExcel(params.xlsx,logger)    
+    excel = ReportExcel(params.xlsx,logger)  
+    datos ={
+                "Name_robot": ["AFF665"],
+                "Status_creation": ["Fail"],
+                "Status_pdf": ["DONE"],
+                "Path_pdf": ["/users/admin"],
+                "Status_final": ["wip"]
+            }
+    excel.create_excel(datos)  
+    datos ={
+                "Name_robot": ["Acc665"],
+                "Status_creation": ["WIP"],
+                "Status_pdf": ["WIP"],
+                "Path_pdf": ["/users/ali"],
+                "Status_final": ["WIP"]
+            }
+    excel.add_data(datos)
+    excel.changeColor()
+    """Mail"""
+    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
 
-    opcionesMatchCase(database,logger,excel)    
+    #opcionesMatchCase(database,logger,excel)    
 
 
 def opcionesMatchCase(database,logger,excel):    

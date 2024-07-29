@@ -19,6 +19,7 @@ def robot_python():
         slowmo=100,
     )
     load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
+    param = importParams()
     log = importLogger()
     name_robot = os.getenv('ROBOT_NAME')
     open_robot_order_website(log)
@@ -26,8 +27,8 @@ def robot_python():
     close_popup(log)
     close = 0        
     order_index = 0
-    #poner aqui el numero de robots que queremos
-    num_robot = 1
+    #numero de robots
+    num_robot = param.num_robots
     total_orders = len(orders)
     try:
         while order_index < total_orders and num_robot > 0 and num_robot < total_orders:
@@ -186,4 +187,11 @@ def importLogger():
     from src import Logger
     log = Logger.Logger()
     return log
+
+def importParams():
+    carpeta_params = os.path.join(os.path.dirname(__file__), '..')
+    sys.path.append(carpeta_params)
+    from ParamsRobot import params
+    return params
+
 
