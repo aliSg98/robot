@@ -10,18 +10,20 @@ import time
 from reportlab.pdfgen import canvas
 from PIL import Image
 import os
-from dotenv import load_dotenv
 
 class RobotSelenium():
-    def __init__(self):
+    def __init__(self,url,url_orders,name_robot,logger):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
-        self.create_robot()          
+        self.url=url
+        self.url_orders=url_orders
+        self.name_robot=name_robot
+        self.logger=logger        
 
-    def open_robot_order_website(self,url):        
-        self.driver.get(url)
+    def open_robot_order_website(self):        
+        self.driver.get(self.url)
 
-    def get_orders(self,url_orders):
+    def get_orders(self):
         path_archivo = r"C:\Users\nasudre\Desktop\Robot\LOG\orders.csv"
         if(os.path.exists(path_archivo)):
             with open(path_archivo, 'r') as csvfichero:
@@ -31,7 +33,7 @@ class RobotSelenium():
                     orders_list.append(row)
             return orders_list
         else:
-            self.driver.get(url_orders)     
+            self.driver.get(self.url_orders)     
             time.sleep(2)     
         
 
@@ -89,7 +91,6 @@ class RobotSelenium():
         self.driver.find_element(By.XPATH, '//*[@id="order-another" and @type="submit"]').click()
 
     def create_robot(self):
-        load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
         url_robot=os.getenv('URL_ROBOT')
         url_orders = os.getenv('URL_ORDERS')
         self.open_robot_order_website(url_robot)

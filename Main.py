@@ -13,8 +13,8 @@ def main():
     database = ConnexionPostgress()
 
     path_xlsx = r"C:\Users\nasudre\Desktop\Robot\LOG\Robot.xlsx"
-    excel = ReportExcel(path_xlsx,logger)
-    
+
+    excel = ReportExcel(path_xlsx,logger)    
 
     opcionesMatchCase(database,logger,excel)    
 
