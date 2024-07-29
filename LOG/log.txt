@@ -276,3 +276,33 @@
 2024-07-29 15:45:44,911 - log - INFO - Excel creado sin datos 
 2024-07-29 15:45:44,926 - log - INFO - Datos añadidos al excel 
 2024-07-29 15:45:44,996 - log - INFO - Excel generado con colores
+2024-07-29 16:15:20,220 - log - INFO - Tabla creada
+2024-07-29 16:15:20,220 - log - INFO - Conexion a la base de datos cerrada
+2024-07-29 16:15:20,337 - log - INFO - Excel creado sin datos 
+2024-07-29 16:15:20,337 - log - INFO - Datos añadidos al excel 
+2024-07-29 16:15:20,423 - log - INFO - Excel generado con colores
+2024-07-29 20:27:36,739 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-29 20:27:37,064 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-29 20:27:45,899 - log - INFO - Captura del robot hecha
+2024-07-29 20:27:53,116 - log - INFO - Pdf creado
+2024-07-29 20:27:56,336 - log - INFO - Captura del robot hecha
+2024-07-29 20:27:58,356 - log - INFO - Imagen introducida en pdf
+2024-07-29 20:28:00,951 - log - INFO - Creando otro robot
+2024-07-29 20:28:02,963 - log - INFO - Robot_1 creado
+2024-07-29 20:28:13,499 - log - INFO - Captura del robot hecha
+2024-07-29 20:28:18,544 - log - ERROR - Error al crear pdf
+2024-07-29 20:28:22,059 - log - INFO - Captura del robot hecha
+2024-07-29 20:29:01,903 - log - INFO - Abriendo pagina de creacion de robots
+2024-07-29 20:29:02,194 - log - INFO - Archivo orders.csv descargado correctamente
+2024-07-29 20:29:11,096 - log - INFO - Captura del robot hecha
+2024-07-29 20:29:17,889 - log - INFO - Pdf creado
+2024-07-29 20:29:21,073 - log - INFO - Captura del robot hecha
+2024-07-29 20:29:22,820 - log - INFO - Imagen introducida en pdf
+2024-07-29 20:29:25,156 - log - INFO - Creando otro robot
+2024-07-29 20:29:27,172 - log - INFO - Robot_1 creado
+2024-07-29 20:29:37,532 - log - INFO - Captura del robot hecha
+2024-07-29 20:29:44,143 - log - INFO - Pdf creado
+2024-07-29 20:29:47,312 - log - INFO - Captura del robot hecha
+2024-07-29 20:29:48,580 - log - INFO - Imagen introducida en pdf
+2024-07-29 20:29:50,941 - log - INFO - Creando otro robot
+2024-07-29 20:29:52,948 - log - INFO - Robot_2 creado

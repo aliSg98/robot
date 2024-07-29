@@ -11,7 +11,14 @@ from ParamsRobot import params
 
 def main():  
     """Cargar .env"""
-    cargarEnv()  
+    load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
+    robot_name = os.getenv('ROBOT_NAME')
+    url_robot = os.getenv('URL_ROBOT')
+    url_orders = os.getenv('URL_ORDERS')
+    email = params.email
+    xlsx = params.xlsx
+    log = params.log
+
     """Iniciar el logger"""
     logger = Logger()
     """Conectarse a la base de datos"""
@@ -39,7 +46,7 @@ def main():
     excel.add_data(datos)
     excel.changeColor()
     """Mail"""
-    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
+    email = Email(email, xlsx, log,"Email con excel, y los logs").send_email()
     #robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
     
 
@@ -101,7 +108,6 @@ def opcionesMatchCase(database,logger,excel):
 
 def cargarEnv():
     load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
-    global robot_name, url_robot, url_orders 
     robot_name = os.getenv('ROBOT_NAME')
     url_robot = os.getenv('URL_ROBOT')
     url_orders = os.getenv('URL_ORDERS')
