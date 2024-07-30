@@ -482,3 +482,13 @@
 2024-07-30 08:37:22,812 - log - INFO - Excel creado sin datos 
 2024-07-30 08:37:22,825 - log - INFO - Datos añadidos al excel 
 2024-07-30 08:37:22,904 - log - INFO - Excel generado con colores
+2024-07-30 09:23:35,903 - log - INFO - Tabla creada
+2024-07-30 09:23:35,903 - log - INFO - Conexion a la base de datos cerrada
+2024-07-30 09:23:36,025 - log - INFO - Excel creado sin datos 
+2024-07-30 09:23:36,041 - log - INFO - Datos añadidos al excel 
+2024-07-30 09:23:36,133 - log - INFO - Excel generado con colores
+2024-07-30 09:55:40,762 - log - INFO - Tabla creada
+2024-07-30 09:55:40,763 - log - INFO - Conexion a la base de datos cerrada
+2024-07-30 09:55:40,881 - log - INFO - Excel creado sin datos 
+2024-07-30 09:55:40,893 - log - INFO - Datos añadidos al excel 
+2024-07-30 09:55:40,999 - log - INFO - Excel generado con colores

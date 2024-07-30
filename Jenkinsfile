@@ -13,7 +13,13 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout del repositorio Git
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/aliSg98/robot.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/pruebas']], userRemoteConfigs: [[url: 'https://github.com/aliSg98/robot.git']]])
+            }
+        }
+        
+        stage('Setup') {
+            steps {
+                bat 'python --version'
             }
         }
         
