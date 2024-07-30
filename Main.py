@@ -18,6 +18,8 @@ def main():
 
     """Iniciar el logger"""
     logger = Logger()
+    """Crear robot en selenium"""
+    robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()
     database.createTable(logger)
@@ -44,8 +46,7 @@ def main():
     excel.changeColor()
     """Mail"""
     email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
-    """Crear robot en selenium"""
-    robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
+    
     
 
     #opcionesMatchCase(database,logger,excel,url_robot,url_orders,robot_name)    
