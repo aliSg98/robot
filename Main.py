@@ -6,9 +6,10 @@ from src.Logger import Logger
 from dotenv import load_dotenv
 from src.Email import Email
 from src.RobotSelenium import RobotSelenium
+from src.RobotFramework import RobotFramework
 from ParamsRobot import params
 #Agregar directorio de paquetes
-sys.path.append(r'C:\Users\nasudre\AppData\Local\Programs\Python\Python312\Lib\site-packages')
+sys.path.append(r'C:\Users\nasudre\AppData\Local\Programs\Python\Python310\Lib\site-packages')
 def main():  
     """Cargar .env"""
     load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
@@ -19,7 +20,9 @@ def main():
     """Iniciar el logger"""
     logger = Logger()
     """Crear robot en selenium"""
-    robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
+    robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
+    """Crear robot en robotFramework"""
+    robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()
     database.createTable(logger)
@@ -45,7 +48,7 @@ def main():
     excel.add_data(datos)
     excel.changeColor()
     """Mail"""
-    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
+    #email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
     
     
 
