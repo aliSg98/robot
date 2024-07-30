@@ -17,12 +17,6 @@ pipeline {
             }
         }
         
-        stage('Setup') {
-            steps {
-                bat 'python --version'
-            }
-        }
-        
         stage('Run main.py') {
             steps {
                 script {

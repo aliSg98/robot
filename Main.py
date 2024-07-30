@@ -43,7 +43,7 @@ def main():
     excel.add_data(datos)
     excel.changeColor()
     """Mail"""
-    #email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
+    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
     """Crear robot en selenium"""
     robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
     
