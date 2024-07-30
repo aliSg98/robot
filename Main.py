@@ -32,18 +32,18 @@ def main():
     excel = ReportExcel(params.xlsx,logger)  
     datos ={
                 "Name_robot": ["AFF665"],
-                "Status_creation": ["Fail"],
+                "Status_creation": ["DONE"],
                 "Status_pdf": ["DONE"],
                 "Path_pdf": ["/users/admin"],
-                "Status_final": ["wip"]
+                "Status_final": ["DONE"]
             }
     excel.create_excel(datos)  
     datos ={
                 "Name_robot": ["Acc665"],
-                "Status_creation": ["WIP"],
-                "Status_pdf": ["WIP"],
+                "Status_creation": ["DONE"],
+                "Status_pdf": ["DONE"],
                 "Path_pdf": ["/users/ali"],
-                "Status_final": ["WIP"]
+                "Status_final": ["DONE"]
             }
     excel.add_data(datos)
     excel.changeColor()
