@@ -467,3 +467,18 @@
 2024-07-29 23:31:57,591 - log - INFO - Excel creado sin datos 
 2024-07-29 23:31:57,608 - log - INFO - Datos añadidos al excel 
 2024-07-29 23:31:57,673 - log - INFO - Excel generado con colores
+2024-07-30 08:35:01,657 - log - INFO - Tabla creada
+2024-07-30 08:35:01,657 - log - INFO - Conexion a la base de datos cerrada
+2024-07-30 08:35:01,793 - log - INFO - Excel creado sin datos 
+2024-07-30 08:35:01,807 - log - INFO - Datos añadidos al excel 
+2024-07-30 08:35:01,885 - log - INFO - Excel generado con colores
+2024-07-30 08:36:27,795 - log - INFO - Tabla creada
+2024-07-30 08:36:27,795 - log - INFO - Conexion a la base de datos cerrada
+2024-07-30 08:36:27,896 - log - INFO - Excel creado sin datos 
+2024-07-30 08:36:27,917 - log - INFO - Datos añadidos al excel 
+2024-07-30 08:36:28,012 - log - INFO - Excel generado con colores
+2024-07-30 08:37:22,687 - log - INFO - Tabla creada
+2024-07-30 08:37:22,687 - log - INFO - Conexion a la base de datos cerrada
+2024-07-30 08:37:22,812 - log - INFO - Excel creado sin datos 
+2024-07-30 08:37:22,825 - log - INFO - Datos añadidos al excel 
+2024-07-30 08:37:22,904 - log - INFO - Excel generado con colores

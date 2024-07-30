@@ -14,18 +14,25 @@ from xhtml2pdf import pisa
 
 class RobotSelenium():
     def __init__(self,url,url_orders,name_robot,numRobots):
-        options = webdriver.ChromeOptions()
-        prefs = {"download.default_directory":r"C:\Users\nasudre\Desktop\Robot\LOG"}
-        options.add_experimental_option("prefs", prefs)
-        self.driver = webdriver.Chrome(options=options)
+        self.driver = self.driver = self.configure_chrome_driver()
         self.url=url
         self.url_orders=url_orders
         self.name_robot=name_robot
         self.numRobots = numRobots    
 
     def open_browser(self):
-        self.driver.get(self.url)
-        self.driver.maximize_window()
+        try: 
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+        except Exception:
+            print("Error al abrir pagina de creacion de robots")   
+
+    def configure_chrome_driver(self):
+        driverOptions = webdriver.ChromeOptions()
+        customs = {"custom_download_directory": r"C:\Users\nasudre\Desktop\Robot\LOG"}
+        driverOptions.add_experimental_option("prefs", customs)
+        driver = webdriver.Chrome(options=driverOptions)
+        return driver 
 
     def close_PopUP(self):
         try:
@@ -120,8 +127,13 @@ class RobotSelenium():
             path = f"C:\\Users\\nasudre\\Desktop\\Robot\\LOG\\"
             pdf_filename = f"{self.name_robot}{order}.pdf"
             pdf_path = path + pdf_filename
+
+            #Abrir pdf en escritura binaria
             with open(pdf_path, "wb") as pdf_file:
-                pdf = pisa.CreatePDF(receipt_element.get_attribute("innerHTML"), dest=pdf_file)
+                #convierte el html en pdf
+                status = pisa.CreatePDF(receipt_element.get_attribute("innerHTML"), dest=pdf_file)
+                print(status.err)
+
             # Abrir el archivo PDF y añadir la imagen
             with fitz.open(pdf_path) as pdf_document:
                 first_page = pdf_document[0]
@@ -140,7 +152,7 @@ class RobotSelenium():
     def createRobot(self):
         try:
             orders = self.get_orders()
-            time.sleep(2)
+            time.sleep(1)
             self.open_browser()
             for order_index in range(self.numRobots):
                 order = orders[order_index]  
