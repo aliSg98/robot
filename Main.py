@@ -19,34 +19,20 @@ def main():
 
     """Iniciar el logger"""
     logger = Logger()
+    """Excel"""
+    excel = ReportExcel(params.xlsx,logger)    
+    #excel.add_data(datos)
+    #excel.add_update_row_data(['Pepas','DONE','Fail','/users/ali','FAIL'])
     """Crear robot en selenium"""
-    robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
+    #robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
     """Crear robot en robotFramework"""
-    robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
+    robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel).createRobot()
+    excel.changeColor()
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()
     database.createTable(logger)
-    database.closeConexion(logger)
+    database.closeConexion(logger)    
     
-    """Excel"""
-    excel = ReportExcel(params.xlsx,logger)  
-    datos ={
-                "Name_robot": ["AFF665"],
-                "Status_creation": ["DONE"],
-                "Status_pdf": ["DONE"],
-                "Path_pdf": ["/users/admin"],
-                "Status_final": ["DONE"]
-            }
-    excel.create_excel(datos)  
-    datos ={
-                "Name_robot": ["Acc665"],
-                "Status_creation": ["DONE"],
-                "Status_pdf": ["DONE"],
-                "Path_pdf": ["/users/ali"],
-                "Status_final": ["DONE"]
-            }
-    excel.add_data(datos)
-    excel.changeColor()
     """Mail"""
     #email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
     
@@ -65,6 +51,7 @@ def opcionesMatchCase(database,logger,excel,url_robot,url_orders,robot_name):
                     6 para añadir colores al excel,
                     7 para enviar email,
                     8 para crear robot en selenium,
+                    9 para crear robot en Rpa
                     """))    
     #match case
     match num:
@@ -79,12 +66,12 @@ def opcionesMatchCase(database,logger,excel,url_robot,url_orders,robot_name):
         case num if num == 4:
             #Crear excel
             datos ={
-                "Name_robot": ["AFF665"],
-                "Status_creation": ["Fail"],
-                "Status_pdf": ["DONE"],
-                "Path_pdf": ["/users/admin"],
-                "Status_final": ["wip"]
-            }
+                    "Name_robot": [],
+                    "Status_creation": [],
+                    "Status_pdf": [],
+                    "Path_pdf": [],
+                    "Status_final": []
+                }
             excel.create_excel(datos)
 
         case num if num == 5:
@@ -102,8 +89,9 @@ def opcionesMatchCase(database,logger,excel,url_robot,url_orders,robot_name):
             #Enviar email
             email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
         case num if num == 8:
-            robot = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots).createRobot()
-            
+            robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
+        case num if num == 9:    
+            robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
         case _:
             logger.setMessage("Error",'error')
             print("Error, numero incorrecto") 

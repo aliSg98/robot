@@ -11,12 +11,13 @@ import sys
 import os
 from dotenv import load_dotenv
 class RobotFramework():
-    def __init__(self,url,url_orders,name_robot,numRobots,logger):
+    def __init__(self,url,url_orders,name_robot,numRobots,logger,excel):
         self.url=url
-        self.url_orders=url_orders
-        self.name_robot=name_robot
+        self.url_orders = url_orders
+        self.name_robot = name_robot
         self.numRobots = numRobots   
         self.logger = logger 
+        self.excel = excel
 
     """Crear robot, crear pdf, hacer captura, crear pdf final con la captura dentro"""
     def createRobot(self):        
@@ -36,18 +37,29 @@ class RobotFramework():
                 time.sleep(5)
                 order_number = order["Order number"]
                 time.sleep(3)
-                self.screenshot_robot(order_number)
+                try:
+                    self.screenshot_robot(order_number)
+                    time.sleep(2)
+                    pdf_file = self.store_receipt_as_pdf(order_number)
+                    time.sleep(1)
+                    screenshot = self.screenshot_robot(order_number)
+                    time.sleep(1)                
+                    self.embed_screenshot_to_pdf(screenshot, pdf_file, order_number)
+                    time.sleep(1) 
+                except Exception:
+                    print("Error al crear pdf ")
+                    self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
+                    self.logger.setMessage("Error al crear pdf", "error")
+                    time.sleep(1) 
+                    break
                 time.sleep(2)
-                pdf_file = self.store_receipt_as_pdf(order_number)
-                time.sleep(1)
-                screenshot = self.screenshot_robot(order_number)
-                time.sleep(1)
-                self.embed_screenshot_to_pdf(screenshot, pdf_file, order_number)
-                time.sleep(2)
-                self.logger.setMessage(f"Robot_{order_number} creado en RPA", "info")        
+                self.logger.setMessage(f"Robot_{order_number} creado en RPA", "info") 
+                self.excel.add_update_row_data([f"Robot_{order_number}","DONE","DONE",str(pdf_file),"DONE"])   
+
         except Exception as exception:
                 print(exception)
                 self.logger.setMessage("Error al crear el robot", "error")
+                self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","DONE",str(pdf_file),"FAIL"])
 
     """Abrir pagina para hacer pedidos de robots"""
     def open_robot_order_website(self):
@@ -105,7 +117,8 @@ class RobotFramework():
             """Address"""
             page.fill("#address", orders["Address"])
             time.sleep(2)
-            return page.click('//*[@id="order" and @type="submit"]')
+
+            page.click('//*[@id="order" and @type="submit"]')
         
         except Exception as exception:
             print(f"Error al completar el formulario{exception}")
