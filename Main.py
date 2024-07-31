@@ -24,9 +24,9 @@ def main():
     #excel.add_data(datos)
     #excel.add_update_row_data(['Pepas','DONE','Fail','/users/ali','FAIL'])
     """Crear robot en selenium"""
-    #robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
+    robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger,excel).createRobot()
     """Crear robot en robotFramework"""
-    robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel).createRobot()
+    #robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel).createRobot()
     excel.changeColor()
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()

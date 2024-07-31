@@ -24,9 +24,11 @@ class RobotFramework():
         browser.configure(
             slowmo=100,
         )
-        self.open_robot_order_website()
-        orders = self.get_orders()    
         try:
+            self.open_robot_order_website()
+            orders = self.get_orders()  
+            order_number = 0
+            pdf_file = ""
             for order_index in range(self.numRobots):
                 time.sleep(1)
                 self.close_popup()
@@ -37,30 +39,19 @@ class RobotFramework():
                 time.sleep(5)
                 order_number = order["Order number"]
                 time.sleep(3)
-                try:
-                    self.screenshot_robot(order_number)
-                    time.sleep(2)
-                    pdf_file = self.store_receipt_as_pdf(order_number)
-                    time.sleep(1)
-                    screenshot = self.screenshot_robot(order_number)
-                    time.sleep(1)                
-                    self.embed_screenshot_to_pdf(screenshot, pdf_file, order_number)
-                    time.sleep(1) 
-                except Exception:
-                    print("Error al crear pdf ")
-                    self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
-                    self.logger.setMessage("Error al crear pdf", "error")
-                    time.sleep(1) 
-                    break
+                self.screenshot_robot(order_number,pdf_file)
                 time.sleep(2)
-                self.logger.setMessage(f"Robot_{order_number} creado en RPA", "info") 
-                self.excel.add_update_row_data([f"Robot_{order_number}","DONE","DONE",str(pdf_file),"DONE"])   
-
-        except Exception as exception:
-                print(exception)
+                pdf_file = self.store_receipt_as_pdf(order_number,pdf_file)
+                time.sleep(1)
+                screenshot = self.screenshot_robot(order_number,pdf_file)
+                time.sleep(1)                
+                self.embed_screenshot_to_pdf(screenshot, pdf_file, order_number)
+                time.sleep(1)                                
+        except Exception:
+                print("Error al crear el robot")
                 self.logger.setMessage("Error al crear el robot", "error")
-                self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","DONE",str(pdf_file),"FAIL"])
-
+                self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
+        
     """Abrir pagina para hacer pedidos de robots"""
     def open_robot_order_website(self):
         try:            
@@ -116,7 +107,7 @@ class RobotFramework():
             page.fill("xpath=//input[@placeholder='Enter the part number for the legs']", orders['Legs'])
             """Address"""
             page.fill("#address", orders["Address"])
-            time.sleep(2)
+            time.sleep(3)
 
             page.click('//*[@id="order" and @type="submit"]')
         
@@ -125,7 +116,7 @@ class RobotFramework():
             self.logger.setMessage("Error al completar el formulario", "error")
 
     """Hago screenshot del robot"""
-    def screenshot_robot(self,order_number):
+    def screenshot_robot(self,order_number,pdf_file):
         try:
             page = browser.page()
             page.screenshot(path=r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\{self.name_robot}{order_number}.png")
@@ -136,9 +127,10 @@ class RobotFramework():
         except Exception:
             print("Error al hacer screenshot del robot")
             self.logger.setMessage("Error al hacer screenshot del robot", "error")
+            self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
 
     """Creo pdf"""
-    def store_receipt_as_pdf(self,order_number):
+    def store_receipt_as_pdf(self,order_number,pdf_file):
         try:
             page = browser.page()
             time.sleep(3)
@@ -151,6 +143,7 @@ class RobotFramework():
         except Exception:
             print("Error al crear pdf")
             self.logger.setMessage("Error al crear pdf", "error")
+            self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
 
     """Meto screenshot en pdf"""
     def embed_screenshot_to_pdf(self,screenshot, pdf_file, order_number):
@@ -165,10 +158,15 @@ class RobotFramework():
             )
             self.logger.setMessage("Imagen introducida en pdf", "info")
             pdf.close_all_pdfs()
+            time.sleep(1)
+            self.excel.add_update_row_data([f"Robot_{order_number}","DONE","DONE",str(pdf_file),"DONE"]) 
+            time.sleep(1)
+            self.logger.setMessage(f"Robot_{order_number} creado en RPA", "info") 
             self.click_other_robot()
         except Exception:
             print("Error al introducir imagen en pdf")
             self.logger.setMessage("Error al introducir imagen en pdf", "error")
+            self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
 
     def click_other_robot(self):
         page = browser.page()
