@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from src.Email import Email
 from src.RobotSelenium import RobotSelenium
 from src.RobotFramework import RobotFramework
+from src.PdfRpaSelenium import PdfRpaSelenium
 from ParamsRobot import params
 #Agregar directorio de paquetes
 sys.path.append(r'C:\Users\nasudre\AppData\Local\Programs\Python\Python310\Lib\site-packages')
@@ -24,9 +25,14 @@ def main():
     #excel.add_data(datos)
     #excel.add_update_row_data(['Pepas','DONE','Fail','/users/ali','FAIL'])
     """Crear robot en selenium"""
-    robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger,excel).createRobot()
+    robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger,excel)
+    robotSelenium.createRobot()
     """Crear robot en robotFramework"""
-    #robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel).createRobot()
+    #robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel)
+    #robotRPA.createRobot()
+    """Combinar pdf de las 2 versiones"""
+    #pdfCombinado = PdfRpaSelenium(robotSelenium.getPath_pdf(),robotRPA.getPath_pdf()).pdfCombination()
+
     excel.changeColor()
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()

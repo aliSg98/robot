@@ -18,6 +18,7 @@ class RobotFramework():
         self.numRobots = numRobots   
         self.logger = logger 
         self.excel = excel
+        self.path_pdf = None
 
     """Crear robot, crear pdf, hacer captura, crear pdf final con la captura dentro"""
     def createRobot(self):        
@@ -30,11 +31,10 @@ class RobotFramework():
             order_number = 0
             pdf_file = ""
             for order_index in range(self.numRobots):
+                order = orders[order_index]
                 time.sleep(1)
                 self.close_popup()
                 time.sleep(1)
-                order = orders[order_index]
-                time.sleep(5)
                 self.fill_the_form(order)
                 time.sleep(5)
                 order_number = order["Order number"]
@@ -160,6 +160,8 @@ class RobotFramework():
             pdf.close_all_pdfs()
             time.sleep(1)
             self.excel.add_update_row_data([f"Robot_{order_number}","DONE","DONE",str(pdf_file),"DONE"]) 
+            time.sleep(3)
+            self.path_pdf=pdf_file
             time.sleep(1)
             self.logger.setMessage(f"Robot_{order_number} creado en RPA", "info") 
             self.click_other_robot()
@@ -177,3 +179,5 @@ class RobotFramework():
             print("Error al hacer click para crear otro robot")
             self.logger.setMessage("Error al hacer click para crear otro robot", "error")
 
+    def getPath_pdf(self):
+        return self.path_pdf

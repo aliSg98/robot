@@ -14,13 +14,14 @@ from xhtml2pdf import pisa
 
 class RobotSelenium():
     def __init__(self,url,url_orders,name_robot,numRobots,logger,excel):
-        self.driver = self.driver = self.configure_chrome_driver()
+        self.driver = self.configure_chrome_driver()
         self.url=url
         self.url_orders=url_orders
         self.name_robot=name_robot
         self.numRobots = numRobots   
         self.logger = logger
         self.excel = excel
+        self.path_pdf= None
 
     """Abrir pagina para hacer pedidos de robots"""
     def open_browser(self):
@@ -34,10 +35,16 @@ class RobotSelenium():
     """Configurar el driver, donde van las descargas"""
     def configure_chrome_driver(self):
         driverOptions = webdriver.ChromeOptions()
-        customs = {"custom_download_directory": r"C:\Users\nasudre\Desktop\Robot\LOG"}
-        driverOptions.add_experimental_option("prefs", customs)
+        # Especificar la carpeta de descargas en lugar de un archivo específico
+        path = r"C:\Users\nasudre\Desktop\Robot\LOG"
+        prefs = {
+            "download.default_directory": path,
+            "download.prompt_for_download": False,
+            "directory_upgrade": True
+        }
+        driverOptions.add_experimental_option("prefs", prefs)
         driver = webdriver.Chrome(options=driverOptions)
-        return driver 
+        return driver
 
     """Cerrar pop up que aparece al abrir la pagina de robots"""
     def close_PopUP(self):
@@ -80,8 +87,7 @@ class RobotSelenium():
             wait = WebDriverWait(self.driver, 10)             
             # Head
             head = Select(self.driver.find_element(By.XPATH,"//select[@id='head']"))
-            head.select_by_value(row["Head"])        
-            time.sleep(1)
+            head.select_by_value(row["Head"])  
             # Body
             radio_buttons = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "input[type='radio']")))
             for radio_button in radio_buttons:
@@ -89,18 +95,17 @@ class RobotSelenium():
                 if value == row['Body']:
                     radio_button.click()
                     break
-            time.sleep(1)
             # legs
             legs = wait.until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter the part number for the legs']")))
             legs.send_keys(row['Legs'])
             time.sleep(1)
-            
             # Dirección
-            address = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#address")))
-            address.send_keys(row['Address'])
-            time.sleep(1)            
+            address = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@id='address']")))
+            address.send_keys(row['Address'])  
+            time.sleep(2)       
             # Hacer clic en el botón de enviar
-            wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="order" and @type="submit"]'))).click()
+            buttonOrder = wait.until(self.driver.find_element(By.ID,"order"))
+            buttonOrder.click()
 
         except (NoSuchElementException, TimeoutException) as e:
             print(f"Error en el formulario: {e}")
@@ -160,6 +165,8 @@ class RobotSelenium():
             time.sleep(1)
             self.logger.setMessage(f"Robot_{order} creado en Selenium", "info") 
             self.excel.add_update_row_data([f"Robot_{order}","DONE","DONE",pdf_filename_excel,"DONE"])  
+            time.sleep(3)
+            self.path_pdf=pdf_filename_excel
             # Ordenar otro robot
             self.driver.find_element(By.XPATH, "//button[@id='order-another']").click()
             time.sleep(1)
@@ -178,21 +185,36 @@ class RobotSelenium():
             time.sleep(1)
             self.open_browser()
             for order_index in range(self.numRobots):
-                order = orders[order_index]  
-                time.sleep(1)          
-                self.close_PopUP()
-                time.sleep(1)
-                order_number = order["Order number"]
-                time.sleep(2)
-                self.fill_the_form(order,pdf_file)
-                time.sleep(3)
-                img = self.get_image(order_number,pdf_file)
-                time.sleep(2) 
-                pdf_file = self.getPdf(img,order_number)
-                time.sleep(1)                 
+                try:
+                    order = orders[order_index]
+                    time.sleep(1)          
+                    self.close_PopUP()
+                    time.sleep(1)
+                    order_number = order["Order number"]
+                    time.sleep(1)
+                    self.fill_the_form(order,pdf_file)             
+                    time.sleep(1)
+                    img = self.get_image(order_number,pdf_file)
+                    time.sleep(1) 
+                    pdf_file = self.getPdf(img,order_number)
+                    time.sleep(1) 
+                except Exception as e:
+                    print("Error al crear el robot")
+                    self.logger.setMessage("Error al crear el robot", "error")
+                    self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
+                    continue                
         except Exception:
             print("Error al crear el robot")
             self.logger.setMessage("Error al crear el robot", "error")
             self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
         finally:
             self.driver.close()
+
+    def getPath_pdf(self):
+        return self.path_pdf
+    
+    
+    
+    
+    
+    

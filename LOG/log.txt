@@ -1,113 +1,22 @@
-2024-07-31 17:56:55,074 - log - INFO - Archivo Excel no encontrado, nuevo excel creado
-2024-07-31 17:57:04,228 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 17:57:23,064 - log - INFO - Robot_1 creado en Selenium
-2024-07-31 17:57:23,064 - log - INFO - Nuevo robot: Robot_1 añadido al Excel
-2024-07-31 17:57:23,127 - log - INFO - Excel guardado correctamente 
-2024-07-31 17:57:27,389 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 17:57:46,197 - log - INFO - Robot_2 creado en Selenium
-2024-07-31 17:57:46,197 - log - INFO - Nuevo robot: Robot_2 añadido al Excel
-2024-07-31 17:57:46,276 - log - INFO - Excel guardado correctamente 
-2024-07-31 17:57:50,520 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 17:58:09,326 - log - INFO - Robot_3 creado en Selenium
-2024-07-31 17:58:09,326 - log - INFO - Nuevo robot: Robot_3 añadido al Excel
-2024-07-31 17:58:09,388 - log - INFO - Excel guardado correctamente 
-2024-07-31 17:58:14,070 - log - INFO - Excel generado con colores
-2024-07-31 17:58:14,148 - log - INFO - Tabla creada
-2024-07-31 17:58:14,148 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 17:59:51,902 - log - INFO - Archivo Excel no encontrado, nuevo excel creado
-2024-07-31 18:00:00,724 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 18:00:13,191 - log - ERROR - Error al crear el robot
-2024-07-31 18:00:13,191 - log - INFO - Nuevo robot: Robot_1 añadido al Excel
-2024-07-31 18:00:13,223 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:00:15,605 - log - INFO - Excel generado con colores
-2024-07-31 18:00:15,684 - log - INFO - Tabla creada
-2024-07-31 18:00:15,699 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 18:01:15,676 - log - INFO - Archivo Excel no encontrado, nuevo excel creado
-2024-07-31 18:01:17,899 - log - INFO - Abriendo pagina de creacion de robots
-2024-07-31 18:01:17,978 - log - INFO - Archivo orders.csv descargado correctamente
-2024-07-31 18:01:39,158 - log - INFO - Captura del robot hecha
-2024-07-31 18:01:44,350 - log - INFO - Pdf creado
-2024-07-31 18:01:47,507 - log - INFO - Captura del robot hecha
-2024-07-31 18:01:48,654 - log - INFO - Imagen introducida en pdf
-2024-07-31 18:01:49,657 - log - INFO - Nuevo robot: Robot_1 añadido al Excel
-2024-07-31 18:01:49,698 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:01:50,698 - log - INFO - Robot_1 creado en RPA
-2024-07-31 18:01:51,144 - log - INFO - Creando otro robot
-2024-07-31 18:01:52,221 - log - INFO - Excel generado con colores
-2024-07-31 18:01:52,292 - log - INFO - Tabla creada
-2024-07-31 18:01:52,292 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 18:03:27,265 - log - INFO - Archivo Excel encontrado
-2024-07-31 18:03:29,390 - log - INFO - Abriendo pagina de creacion de robots
-2024-07-31 18:03:29,525 - log - INFO - Archivo orders.csv descargado correctamente
-2024-07-31 18:03:50,674 - log - INFO - Captura del robot hecha
-2024-07-31 18:03:55,855 - log - INFO - Pdf creado
-2024-07-31 18:03:59,017 - log - INFO - Captura del robot hecha
-2024-07-31 18:04:00,148 - log - INFO - Imagen introducida en pdf
-2024-07-31 18:04:01,158 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
-2024-07-31 18:04:01,230 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:04:02,234 - log - INFO - Robot_1 creado en RPA
-2024-07-31 18:04:02,638 - log - INFO - Creando otro robot
-2024-07-31 18:04:03,694 - log - INFO - Excel generado con colores
-2024-07-31 18:04:03,772 - log - INFO - Tabla creada
-2024-07-31 18:04:03,772 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 18:04:30,876 - log - INFO - Archivo Excel no encontrado, nuevo excel creado
-2024-07-31 18:04:40,853 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 18:04:51,359 - log - ERROR - Error al crear el robot
-2024-07-31 18:04:51,359 - log - INFO - Nuevo robot: Robot_1 añadido al Excel
-2024-07-31 18:04:51,395 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:04:53,702 - log - INFO - Excel generado con colores
-2024-07-31 18:04:53,773 - log - INFO - Tabla creada
-2024-07-31 18:04:53,773 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 18:05:52,529 - log - INFO - Archivo Excel encontrado
-2024-07-31 18:06:01,780 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 18:06:14,284 - log - ERROR - Error al crear el robot
-2024-07-31 18:06:14,308 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
-2024-07-31 18:06:14,401 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:06:16,680 - log - INFO - Excel generado con colores
-2024-07-31 18:06:16,742 - log - INFO - Tabla creada
-2024-07-31 18:06:16,742 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 18:07:32,690 - log - INFO - Archivo Excel no encontrado, nuevo excel creado
-2024-07-31 18:07:42,095 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 18:08:00,886 - log - INFO - Robot_1 creado en Selenium
-2024-07-31 18:08:00,886 - log - INFO - Nuevo robot: Robot_1 añadido al Excel
-2024-07-31 18:08:00,949 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:08:05,490 - log - INFO - Excel generado con colores
-2024-07-31 18:08:05,569 - log - INFO - Tabla creada
-2024-07-31 18:08:05,569 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 18:14:24,845 - log - INFO - Archivo Excel encontrado
-2024-07-31 18:14:34,103 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 18:14:46,603 - log - ERROR - Error al crear el robot
-2024-07-31 18:14:46,603 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
-2024-07-31 18:14:46,672 - log - ERROR - Error al guardar el Excel: [Errno 13] Permission denied: 'C:\\Users\\nasudre\\Desktop\\Robot\\LOG\\Robot.xlsx'
-2024-07-31 18:16:53,538 - log - INFO - Archivo Excel encontrado
-2024-07-31 18:17:02,830 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 18:17:15,348 - log - ERROR - Error al crear el robot
-2024-07-31 18:17:15,348 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
-2024-07-31 18:17:15,450 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:17:17,774 - log - INFO - Excel generado con colores
-2024-07-31 18:17:17,844 - log - INFO - Tabla creada
-2024-07-31 18:17:17,844 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 18:18:30,867 - log - INFO - Archivo Excel no encontrado, nuevo excel creado
-2024-07-31 18:18:40,002 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 18:18:52,543 - log - ERROR - Error al crear el robot
-2024-07-31 18:18:52,543 - log - INFO - Nuevo robot: Robot_1 añadido al Excel
-2024-07-31 18:18:52,579 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:18:54,995 - log - INFO - Excel generado con colores
-2024-07-31 18:18:55,080 - log - INFO - Tabla creada
-2024-07-31 18:18:55,080 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 18:19:59,271 - log - INFO - Archivo Excel encontrado
-2024-07-31 18:20:08,511 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 18:20:19,922 - log - ERROR - Error al crear el robot
-2024-07-31 18:20:19,922 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
-2024-07-31 18:20:20,063 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:20:22,423 - log - INFO - Excel generado con colores
-2024-07-31 18:20:22,492 - log - INFO - Tabla creada
-2024-07-31 18:20:22,492 - log - INFO - Conexion a la base de datos cerrada
-2024-07-31 18:20:56,441 - log - INFO - Archivo Excel encontrado
-2024-07-31 18:21:05,546 - log - INFO - Pop-up cerrado correctamente
-2024-07-31 18:21:20,291 - log - INFO - Robot_1 creado en Selenium
-2024-07-31 18:21:20,291 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
-2024-07-31 18:21:20,392 - log - INFO - Excel guardado correctamente 
-2024-07-31 18:21:24,984 - log - INFO - Excel generado con colores
-2024-07-31 18:21:25,059 - log - INFO - Tabla creada
-2024-07-31 18:21:25,059 - log - INFO - Conexion a la base de datos cerrada
+2024-08-03 15:41:22,765 - log - INFO - Archivo Excel encontrado
+2024-08-03 15:41:31,737 - log - INFO - Pop-up cerrado correctamente
+2024-08-03 15:41:37,054 - log - ERROR - Error al crear el robot
+2024-08-03 15:41:37,054 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
+2024-08-03 15:41:37,054 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
+2024-08-03 15:41:37,054 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
+2024-08-03 15:41:37,054 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
+2024-08-03 15:41:37,054 - log - ERROR - Error al actualizar datos
+2024-08-03 15:41:37,310 - log - INFO - Excel generado con colores
+2024-08-03 15:41:37,389 - log - INFO - Tabla creada
+2024-08-03 15:41:37,389 - log - INFO - Conexion a la base de datos cerrada
+2024-08-03 15:43:06,615 - log - INFO - Archivo Excel encontrado
+2024-08-03 15:43:15,480 - log - INFO - Pop-up cerrado correctamente
+2024-08-03 15:43:20,817 - log - ERROR - Error al crear el robot
+2024-08-03 15:43:20,817 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
+2024-08-03 15:43:20,817 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
+2024-08-03 15:43:20,817 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
+2024-08-03 15:43:20,817 - log - INFO - Datos del robot: Robot_1 actualizados en el Excel
+2024-08-03 15:43:20,817 - log - ERROR - Error al actualizar datos
+2024-08-03 15:43:21,114 - log - INFO - Excel generado con colores
+2024-08-03 15:43:21,231 - log - INFO - Tabla creada
+2024-08-03 15:43:21,231 - log - INFO - Conexion a la base de datos cerrada
