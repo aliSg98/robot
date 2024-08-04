@@ -36,7 +36,7 @@ class RobotFramework():
                 self.close_popup()
                 time.sleep(1)
                 self.fill_the_form(order)
-                time.sleep(5)
+                time.sleep(1)
                 order_number = order["Order number"]
                 time.sleep(3)
                 self.screenshot_robot(order_number,pdf_file)
@@ -156,14 +156,13 @@ class RobotFramework():
                 output_path=r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\{self.name_robot}{order_number}.pdf"
 
             )
-            self.logger.setMessage("Imagen introducida en pdf", "info")
-            pdf.close_all_pdfs()
-            time.sleep(1)
-            self.excel.add_update_row_data([f"Robot_{order_number}","DONE","DONE",str(pdf_file),"DONE"]) 
+            self.logger.setMessage("Imagen introducida en pdf", "info")            
             time.sleep(3)
             self.path_pdf=pdf_file
             time.sleep(1)
             self.logger.setMessage(f"Robot_{order_number} creado en RPA", "info") 
+            self.excel.add_update_row_data([f"Robot_{order_number}","DONE","DONE",str(pdf_file),"DONE"])
+            pdf.close_all_pdfs()
             self.click_other_robot()
         except Exception:
             print("Error al introducir imagen en pdf")

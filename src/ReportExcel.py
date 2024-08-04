@@ -105,21 +105,16 @@ class ReportExcel:
             row_index = self.df.index[self.df[column_name] == value].tolist()
 
             if row_index:
-            # Actualizar la fila existente
-                for i, col in enumerate(self.df.columns):
-                    # Convertir el valor a tipo adecuado antes de asignar
-                    if self.df[col].dtype == 'float64':
-                        self.df.at[row_index[0], col] = float(row_data[i]) if row_data[i] else np.nan
-                    else:
-                        self.df.at[row_index[0], col] = row_data[i]
-                        self.logger.setMessage(f"Datos del robot: {value} actualizados en el Excel", 'info')
-                        print(f"Datos del robot: {value} actualizados en el Excel")
-                else:
+                # Actualizar la fila existente
+                self.df.loc[row_index[0]] = row_data
+                self.logger.setMessage(f"Datos del robot: {value} actualizados en el Excel", 'info')
+                print(f"Datos del robot: {value} actualizados en el Excel")
+            else:
                 # Añadir una nueva fila si no se encuentra una fila con el mismo valor
-                    new_row = {col: float(row_data[i]) if self.df[col].dtype == 'float64' and row_data[i] else row_data[i] for i, col in enumerate(self.df.columns)}
-                    self.df = self.df.append(new_row, ignore_index=True)
-                    self.logger.setMessage(f"Nuevo robot: {value} añadido al Excel", 'info')
-                    print(f"Nuevo robot: {value} añadido al Excel")
+                new_row = pd.DataFrame([row_data], columns=self.df.columns)
+                self.df = pd.concat([self.df, new_row], ignore_index=True)
+                self.logger.setMessage(f"Nuevo robot: {value} añadido al Excel", 'info')
+                print(f"Nuevo robot: {value} añadido al Excel")
 
             # Guardar el DataFrame actualizado en el archivo Excel
             try:
