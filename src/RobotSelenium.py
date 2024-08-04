@@ -104,8 +104,7 @@ class RobotSelenium():
             address.send_keys(row['Address'])  
             time.sleep(2)       
             # Hacer clic en el botón de enviar
-            buttonOrder = wait.until(self.driver.find_element(By.ID,"order"))
-            buttonOrder.click()
+            wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="order" and @type="submit"]'))).click()
 
         except (NoSuchElementException, TimeoutException) as e:
             print(f"Error en el formulario: {e}")
@@ -191,9 +190,9 @@ class RobotSelenium():
                     self.close_PopUP()
                     time.sleep(1)
                     order_number = order["Order number"]
-                    time.sleep(1)
+                    time.sleep(2)
                     self.fill_the_form(order,pdf_file)             
-                    time.sleep(1)
+                    time.sleep(2)
                     img = self.get_image(order_number,pdf_file)
                     time.sleep(1) 
                     pdf_file = self.getPdf(img,order_number)
@@ -201,12 +200,12 @@ class RobotSelenium():
                 except Exception as e:
                     print("Error al crear el robot")
                     self.logger.setMessage("Error al crear el robot", "error")
-                    self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
+                    self.excel.add_update_row_data([f"Robot_{order}","FAIL","FAIL",str(pdf_file),"FAIL"])
                     continue                
         except Exception:
             print("Error al crear el robot")
             self.logger.setMessage("Error al crear el robot", "error")
-            self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
+            self.excel.add_update_row_data([f"Robot_{order}","FAIL","FAIL",str(pdf_file),"FAIL"])
         finally:
             self.driver.close()
 
