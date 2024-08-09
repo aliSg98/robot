@@ -28,8 +28,8 @@ def main():
     robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger,excel)
     robotSelenium.createRobot()
     """Crear robot en robotFramework"""
-    #robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel)
-    #robotRPA.createRobot()
+    robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel)
+    robotRPA.createRobot()
     """Combinar pdf de las 2 versiones"""
     #pdfCombinado = PdfRpaSelenium(robotSelenium.getPath_pdf(),robotRPA.getPath_pdf()).pdfCombination()
 

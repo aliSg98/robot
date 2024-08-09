@@ -167,6 +167,7 @@ class RobotSelenium():
             time.sleep(3)
             self.path_pdf=pdf_filename_excel
             # Ordenar otro robot
+            time.sleep(2)
             self.driver.find_element(By.XPATH, "//button[@id='order-another']").click()
             time.sleep(1)
             return pdf_path
@@ -183,29 +184,24 @@ class RobotSelenium():
             orders = self.get_orders()
             time.sleep(1)
             self.open_browser()
-            for order_index in range(self.numRobots):
-                try:
-                    order = orders[order_index]
-                    time.sleep(1)          
-                    self.close_PopUP()
-                    time.sleep(1)
-                    order_number = order["Order number"]
-                    time.sleep(2)
-                    self.fill_the_form(order,pdf_file)             
-                    time.sleep(2)
-                    img = self.get_image(order_number,pdf_file)
-                    time.sleep(1) 
-                    pdf_file = self.getPdf(img,order_number)
-                    time.sleep(1) 
-                except Exception as e:
-                    print("Error al crear el robot")
-                    self.logger.setMessage("Error al crear el robot", "error")
-                    self.excel.add_update_row_data([f"Robot_{order}","FAIL","FAIL",str(pdf_file),"FAIL"])
-                    continue                
+            for order_index in range(self.numRobots):                
+                order = orders[order_index]
+                time.sleep(1)          
+                self.close_PopUP()
+                time.sleep(1)
+                order_number = order["Order number"]
+                time.sleep(2)
+                self.fill_the_form(order,pdf_file)             
+                time.sleep(2)
+                img = self.get_image(order_number,pdf_file)
+                time.sleep(1) 
+                pdf_file = self.getPdf(img,order_number)
+                time.sleep(1)                
         except Exception:
             print("Error al crear el robot")
             self.logger.setMessage("Error al crear el robot", "error")
-            self.excel.add_update_row_data([f"Robot_{order}","FAIL","FAIL",str(pdf_file),"FAIL"])
+            if order_index > 0 :
+                self.excel.add_update_row_data([f"Robot_{order_index}","FAIL","FAIL",str(pdf_file),"FAIL"])
         finally:
             self.driver.close()
 

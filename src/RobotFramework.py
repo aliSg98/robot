@@ -50,7 +50,8 @@ class RobotFramework():
         except Exception:
                 print("Error al crear el robot")
                 self.logger.setMessage("Error al crear el robot", "error")
-                self.excel.add_update_row_data([f"Robot_{order_number}","FAIL","FAIL",str(pdf_file),"FAIL"])
+                if order_index > 0:
+                    self.excel.add_update_row_data([f"Robot_{order_index}","FAIL","FAIL",str(pdf_file),"FAIL"])
         
     """Abrir pagina para hacer pedidos de robots"""
     def open_robot_order_website(self):
