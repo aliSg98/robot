@@ -109,7 +109,7 @@ class RobotSelenium():
         except (NoSuchElementException, TimeoutException) as e:
             print(f"Error en el formulario: {e}")
             self.logger.setMessage(f"Error en el formulario: {e}", "error")
-            self.excel.add_update_row_data([f"Robot_{row}","FAIL","FAIL",str(pdf_file),"FAIL"])
+            self.excel.add_update_row_data([f"{self.name_robot}{row}","FAIL","FAIL",str(pdf_file),"FAIL"])
 
 
     """Hacer screenshot del robot"""
@@ -135,7 +135,7 @@ class RobotSelenium():
         except Exception as e:
             print(f"Error al hacer captura: {e}")
             self.logger.setMessage(f"Error al hacer captura: {e}", "error")
-            self.excel.add_update_row_data([f"Robot_{order}","FAIL","FAIL",str(pdf_file),"FAIL"])
+            self.excel.add_update_row_data([f"{self.name_robot}{order}","FAIL","FAIL",str(pdf_file),"FAIL"])
 
     """Hacer pdf, y meter la imagen del robot"""
     def getPdf(self,img,order):
@@ -162,8 +162,8 @@ class RobotSelenium():
                 first_page.insert_image(image_rect, filename=img)
                 pdf_document.saveIncr()
             time.sleep(1)
-            self.logger.setMessage(f"Robot_{order} creado en Selenium", "info") 
-            self.excel.add_update_row_data([f"Robot_{order}","DONE","DONE",pdf_filename_excel,"DONE"])  
+            self.logger.setMessage(f"{self.name_robot}{order} creado en Selenium", "info") 
+            self.excel.add_update_row_data([f"{self.name_robot}{order}","DONE","DONE",pdf_filename_excel,"DONE"])  
             time.sleep(3)
             self.path_pdf=pdf_filename_excel
             # Ordenar otro robot
@@ -174,7 +174,7 @@ class RobotSelenium():
         except Exception as e:
             print(f"Error al generar el PDF: {e}")
             self.logger.setMessage(f"Error al generar el PDF: {e}", "error")
-            self.excel.add_update_row_data([f"Robot_{order}","FAIL","FAIL",str(pdf_filename),"FAIL"])
+            self.excel.add_update_row_data([f"{self.name_robot}{order}","FAIL","FAIL",str(pdf_filename),"FAIL"])
 
     """Tarea final que llama a las demas funciones y crea el robot"""
     def createRobot(self):
@@ -201,7 +201,7 @@ class RobotSelenium():
             print("Error al crear el robot")
             self.logger.setMessage("Error al crear el robot", "error")
             if order_index > 0 :
-                self.excel.add_update_row_data([f"Robot_{order_index}","FAIL","FAIL",str(pdf_file),"FAIL"])
+                self.excel.add_update_row_data([f"{self.name_robot}{order_index}","FAIL","FAIL",str(pdf_file),"FAIL"])
         finally:
             self.driver.close()
 

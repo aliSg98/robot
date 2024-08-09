@@ -15,6 +15,7 @@ def main():
     """Cargar .env"""
     load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
     robot_name = os.getenv('ROBOT_NAME')
+    robot_selenium = os.getenv('ROBOT_NAME_SELENIUM')
     url_robot = os.getenv('URL_ROBOT')
     url_orders = os.getenv('URL_ORDERS')
 
@@ -25,13 +26,13 @@ def main():
     #excel.add_data(datos)
     #excel.add_update_row_data(['Pepas','DONE','Fail','/users/ali','FAIL'])
     """Crear robot en selenium"""
-    robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger,excel)
+    robotSelenium = RobotSelenium(url_robot,url_orders,robot_selenium,params.num_robots,logger,excel)
     robotSelenium.createRobot()
     """Crear robot en robotFramework"""
     robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel)
     robotRPA.createRobot()
     """Combinar pdf de las 2 versiones"""
-    #pdfCombinado = PdfRpaSelenium(robotSelenium.getPath_pdf(),robotRPA.getPath_pdf()).pdfCombination()
+    pdfCombinado = PdfRpaSelenium(robotSelenium.getPath_pdf(),robotRPA.getPath_pdf()).pdfCombination()
 
     excel.changeColor()
     """Conectarse a la base de datos"""
