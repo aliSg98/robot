@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 import fitz
 from PIL import Image
@@ -21,7 +22,7 @@ class RobotSelenium():
         self.numRobots = numRobots   
         self.logger = logger
         self.excel = excel
-        self.path_pdf= None
+        self.path_pdf = None
 
     """Abrir pagina para hacer pedidos de robots"""
     def open_browser(self):
@@ -104,7 +105,10 @@ class RobotSelenium():
             address.send_keys(row['Address'])  
             time.sleep(2)       
             # Hacer clic en el botón de enviar
-            wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="order" and @type="submit"]'))).click()
+            button = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="order" and @type="submit"]')))
+            #mover hacia abajo la pagina, para que sea visible el boton
+            action = ActionChains(self.driver)
+            action.move_to_element(button).click().perform()  
 
         except (NoSuchElementException, TimeoutException) as e:
             print(f"Error en el formulario: {e}")
