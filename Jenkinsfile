@@ -4,6 +4,7 @@ pipeline {
     environment {
             // Definir las variables de entorno que se necesiten
             ROBOT_NAME = 'Robot_'
+            ROBOT_NAME_SELENIUM = 'Robot_Sel_'
             URL_ROBOT = 'https://robotsparebinindustries.com/#/robot-order'
             URL_ORDERS = 'https://robotsparebinindustries.com/orders.csv'
     }  

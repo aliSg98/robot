@@ -49,7 +49,7 @@ class ReportExcel:
         color_fail = PatternFill(start_color="FF0000",end_color="FF0000",fill_type="solid")
 
         #columans que me interesa cambiar el color
-        c = [2,3,5]
+        c = [2,3,4,5]
         for columna in res.iter_rows(min_row=2,max_row=res.max_row):
             for col in c:
                 #openpyxl usa indices base 1
@@ -116,7 +116,7 @@ class ReportExcel:
                 self.logger.setMessage(f"Nuevo robot: {value} añadido al Excel", 'info')
                 print(f"Nuevo robot: {value} añadido al Excel")
 
-            # Guardar el DataFrame actualizado en el archivo Excel
+            # Guardar el DataFrame actualizado en el Excel
             try:
                 self.df.to_excel(self.path_xlsx, index=False, sheet_name='Robots')
                 self.logger.setMessage(f"Excel guardado correctamente ", 'info')

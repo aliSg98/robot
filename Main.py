@@ -23,82 +23,53 @@ def main():
     logger = Logger()
     """Excel"""
     excel = ReportExcel(params.xlsx,logger)    
-    #excel.add_data(datos)
-    #excel.add_update_row_data(['Pepas','DONE','Fail','/users/ali','FAIL'])
-    """Crear robot en selenium"""
-    robotSelenium = RobotSelenium(url_robot,url_orders,robot_selenium,params.num_robots,logger,excel)
-    robotSelenium.createRobot()
-    """Crear robot en robotFramework"""
-    robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel)
-    robotRPA.createRobot()
-    """Combinar pdf de las 2 versiones"""
-    pdfCombinado = PdfRpaSelenium(robotSelenium.getPath_pdf(),robotRPA.getPath_pdf()).pdfCombination()
-
-    excel.changeColor()
     """Conectarse a la base de datos"""
     database = ConnexionPostgress()
     database.createTable(logger)
-    database.closeConexion(logger)    
-    
-    """Mail"""
-    #email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
+    """Crear robot en selenium"""
+    robotSelenium = RobotSelenium(url_robot,url_orders,robot_selenium,params.num_robots,logger,excel,database)
+    robotSelenium.createRobot()
+    """Crear robot en robotFramework"""
+    robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel,database)
+    robotRPA.createRobot()
+    """Combinar pdf de las 2 versiones"""
+    #pdfCombinado = PdfRpaSelenium(robotSelenium.getPath_pdf(),robotRPA.getPath_pdf()).pdfCombination()
+    """Poner colores en el exel"""
+    excel.changeColor()
+    """Cerrar conexion a base de datos"""
+    database.closeConexion(logger)        
+    """Enviar Mail"""
+    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
     
     
 
     #opcionesMatchCase(database,logger,excel,url_robot,url_orders,robot_name)    
 
 
-def opcionesMatchCase(database,logger,excel,url_robot,url_orders,robot_name):    
+def opcionesMatchCase(database,logger,excel,url_robot,url_orders,robot_name,robot_selenium):    
     """Elegir si quieres crear la tabla o hacer un insert con los datos que quieras"""
-    num = int(input("""Ingrese 1 para Crear tabla en base de datos, 
-                    2 para hacer INSERT a la base de datos,  
-                    3 para cerrar base de datos,
-                    4 para crear excel,
-                    5 para añadir datos al excel,
-                    6 para añadir colores al excel,
-                    7 para enviar email,
-                    8 para crear robot en selenium,
-                    9 para crear robot en Rpa
+    num = int(input("""Ingrese 1  para crear excel,
+                    2 para añadir colores al excel,
+                    3 para enviar email,
+                    4 para crear robot en selenium,
+                    5 para crear robot en Rpa
                     """))    
     #match case
-    match num:
+    match num:        
         case num if num == 1:
-            #create
-            database.createTable(logger)            
-        case num if num == 2:
-            #insert
-            database.insert(logger)           
-        case num if num == 3:
-            database.closeConexion(logger) 
-        case num if num == 4:
             #Crear excel
-            datos ={
-                    "Name_robot": [],
-                    "Status_creation": [],
-                    "Status_pdf": [],
-                    "Path_pdf": [],
-                    "Status_final": []
-                }
-            excel.create_excel(datos)
-
-        case num if num == 5:
-            datos ={
-                "Name_robot": ["Acc665"],
-                "Status_creation": ["WIP"],
-                "Status_pdf": ["WIP"],
-                "Path_pdf": ["/users/ali"],
-                "Status_final": ["WIP"]
-            }
-            excel.add_data(datos)
-        case num if num == 6:
+            excel = ReportExcel(params.xlsx,logger)
+        case num if num == 2:
             excel.changeColor()
-        case num if num == 7:
+        case num if num == 3:
             #Enviar email
             email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
-        case num if num == 8:
-            robotSelenium = RobotSelenium(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
-        case num if num == 9:    
-            robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger).createRobot()
+        case num if num == 4:
+            robotSelenium = RobotSelenium(url_robot,url_orders,robot_selenium,params.num_robots,logger,excel,database)
+            robotSelenium.createRobot()
+        case num if num == 5:    
+            robotRPA = RobotFramework(url_robot,url_orders,robot_name,params.num_robots,logger,excel,database)
+            robotRPA.createRobot()
         case _:
             logger.setMessage("Error",'error')
             print("Error, numero incorrecto") 

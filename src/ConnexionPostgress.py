@@ -57,3 +57,29 @@ class ConnexionPostgress:
         logger.setMessage("Conexion a la base de datos cerrada",'info')
         print("Base de datos cerrada ")
 
+    """Hacer insert en la tabla"""
+    def insertData(self,logger,nombre,status,status_pdf,path,final_status):
+        try:
+            self._cursor = self._conexion.cursor()
+            sql_check = 'SELECT COUNT(*) FROM robot WHERE name_robot = %s'
+            self._cursor.execute(sql_check, (nombre,))
+            exists = self._cursor.fetchone()[0]
+
+            if exists:
+                logger.setMessage(f"El robot '{nombre}' ya existe en la base de datos.", 'warning')
+                print(f"El robot '{nombre}' ya existe en la base de datos.")
+            else:
+                sql = 'INSERT INTO robot(name_robot,status_creation,status_pdf,path_pdf,status_final) values (%s,%s,%s,%s,%s)'
+                datos = (nombre,status,status_pdf,path,final_status)
+                self._cursor.execute(sql,datos)
+                #guardar datos
+                self._conexion.commit()
+                logger.setMessage("Datos insertados a la base de datos",'info')
+                print("Datos insertados en la base de datos")
+        except Exception as e:
+            logger.setMessage(f"Error al insertar datos en la base de datos: {e}", 'error')
+            print(f"Error al insertar datos en la base de datos: {e}")
+        finally:
+        # Cerrar cursor
+            self._cursor.close()
+
