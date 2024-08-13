@@ -22,7 +22,7 @@ class RobotSelenium():
         self.numRobots = numRobots   
         self.logger = logger
         self.excel = excel
-        self.path_pdf = None
+        self.path_pdf = []
         self.database = database
 
     """Abrir pagina para hacer pedidos de robots"""
@@ -174,7 +174,7 @@ class RobotSelenium():
             time.sleep(1)
             self.database.insertData(self.logger,f"{self.name_robot}{order}","DONE","DONE",pdf_filename_excel,"DONE") 
             time.sleep(3)
-            self.path_pdf=pdf_filename_excel
+            self.path_pdf.append(pdf_filename_excel)
             # Ordenar otro robot
             time.sleep(2)
             self.driver.find_element(By.XPATH, "//button[@id='order-another']").click()

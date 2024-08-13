@@ -18,7 +18,7 @@ class RobotFramework():
         self.numRobots = numRobots   
         self.logger = logger 
         self.excel = excel
-        self.path_pdf = None
+        self.path_pdf = []
         self.database = database
 
     """Crear robot, crear pdf, hacer captura, crear pdf final con la captura dentro"""
@@ -162,7 +162,7 @@ class RobotFramework():
             )
             self.logger.setMessage("Imagen introducida en pdf", "info")            
             time.sleep(3)
-            self.path_pdf=pdf_file
+            self.path_pdf.append(pdf_file)
             time.sleep(1)
             self.logger.setMessage(f"{self.name_robot}{order_number} creado en RPA", "info") 
             self.excel.add_update_row_data([f"{self.name_robot}{order_number}","DONE","DONE",str(pdf_file),"DONE"])
