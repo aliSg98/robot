@@ -901,3 +901,23 @@
 2024-08-14 12:30:19,282 - log - ERROR - El robot 'Robot_Sel_1' ya existe en la base de datos.
 2024-08-14 12:30:25,740 - log - INFO - Excel generado con colores
 2024-08-14 12:30:25,740 - log - INFO - Conexion a la base de datos cerrada
+2024-08-14 12:38:40,327 - log - INFO - Archivo Excel no encontrado, nuevo excel creado
+2024-08-14 12:38:40,401 - log - INFO - Tabla creada
+2024-08-14 12:38:42,282 - log - INFO - Abriendo pagina de creacion de robots
+2024-08-14 12:38:42,449 - log - INFO - Archivo orders.csv descargado correctamente
+2024-08-14 12:38:54,621 - log - INFO - Captura del robot hecha
+2024-08-14 12:38:59,907 - log - INFO - Pdf creado
+2024-08-14 12:39:03,050 - log - INFO - Captura del robot hecha
+2024-08-14 12:39:04,223 - log - INFO - Imagen introducida en pdf
+2024-08-14 12:39:08,229 - log - INFO - Robot_1 creado en RPA
+2024-08-14 12:39:08,232 - log - INFO - Nuevo robot: Robot_1 añadido al Excel
+2024-08-14 12:39:08,280 - log - INFO - Excel guardado correctamente 
+2024-08-14 12:39:08,283 - log - ERROR - El robot 'Robot_1' ya existe en la base de datos.
+2024-08-14 12:39:08,546 - log - INFO - Creando otro robot
+2024-08-14 12:39:18,759 - log - INFO - Pop-up cerrado correctamente
+2024-08-14 12:39:30,768 - log - INFO - Robot_Sel_1 creado en Selenium
+2024-08-14 12:39:31,783 - log - INFO - Nuevo robot: Robot_Sel_1 añadido al Excel
+2024-08-14 12:39:31,814 - log - INFO - Excel guardado correctamente 
+2024-08-14 12:39:32,829 - log - ERROR - El robot 'Robot_Sel_1' ya existe en la base de datos.
+2024-08-14 12:39:39,381 - log - INFO - Excel generado con colores
+2024-08-14 12:39:39,381 - log - INFO - Conexion a la base de datos cerrada

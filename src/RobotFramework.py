@@ -47,7 +47,7 @@ class RobotFramework():
                 screenshot = self.screenshot_robot(order_number)
                 time.sleep(1)                
                 self.screenshot_to_pdf(screenshot, pdf_file, order_number)
-                time.sleep(1)                                
+                time.sleep(1)                               
         except Exception:
                 print("Error al crear el robot")
                 self.logger.setMessage("Error al crear el robot", "error")
