@@ -33,13 +33,15 @@ def main():
     robotSelenium = RobotSelenium(url_robot,url_orders,robot_selenium,params.num_robots,logger,excel,database)
     robotSelenium.createRobot()
     """Combinar pdf de las 2 versiones"""
-    pdfCombinado = PdfRpaSelenium(robotRPA.getPath_pdf(),robotSelenium.getPath_pdf()).pdfCombination()
+    pdfsRpa = robotRPA.getPath_pdf()
+    pdfsSelenium = robotSelenium.getPath_pdf()
+    pdfCombinado = PdfRpaSelenium(pdfsRpa,pdfsSelenium).pdf_combination()
     """Poner colores en el exel"""
     excel.changeColor()
     """Cerrar conexion a base de datos"""
     database.closeConexion(logger)        
     """Enviar Mail"""
-    #email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
+    email = Email(params.email, params.xlsx, params.log,"Email con excel, y los logs").send_email()
     
     
 

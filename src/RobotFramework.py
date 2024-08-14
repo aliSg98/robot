@@ -160,14 +160,15 @@ class RobotFramework():
                 output_path=r"C:\Users\nasudre\Desktop\Robot\LOG"+f"\{self.name_robot}{order_number}.pdf"
 
             )
+            pdf.close_pdf()
             self.logger.setMessage("Imagen introducida en pdf", "info")            
             time.sleep(3)
-            self.path_pdf.append(pdf_file)
+            self.path_pdf.append(str(pdf_file))
             time.sleep(1)
             self.logger.setMessage(f"{self.name_robot}{order_number} creado en RPA", "info") 
             self.excel.add_update_row_data([f"{self.name_robot}{order_number}","DONE","DONE",str(pdf_file),"DONE"])
             self.database.insertData(self.logger,f"{self.name_robot}{order_number}","DONE","DONE",str(pdf_file),"DONE")
-            pdf.close_all_pdfs()
+            
             self.click_other_robot()
         except Exception:
             print("Error al introducir imagen en pdf")

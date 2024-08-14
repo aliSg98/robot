@@ -174,7 +174,7 @@ class RobotSelenium():
             time.sleep(1)
             self.database.insertData(self.logger,f"{self.name_robot}{order}","DONE","DONE",pdf_filename_excel,"DONE") 
             time.sleep(3)
-            self.path_pdf.append(pdf_filename_excel)
+            self.path_pdf.append(str(pdf_filename_excel))
             # Ordenar otro robot
             time.sleep(2)
             self.driver.find_element(By.XPATH, "//button[@id='order-another']").click()
