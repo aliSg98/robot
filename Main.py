@@ -35,7 +35,7 @@ def main():
     """Combinar pdf de las 2 versiones"""
     pdfsRpa = robotRPA.getPath_pdf()
     pdfsSelenium = robotSelenium.getPath_pdf()
-    pdfCombinado = PdfRpaSelenium(pdfsRpa,pdfsSelenium).pdf_combination()
+    pdfCombinado = PdfRpaSelenium(pdfsRpa,pdfsSelenium,logger).pdf_combination()
     """Poner colores en el exel"""
     excel.changeColor()
     """Cerrar conexion a base de datos"""
