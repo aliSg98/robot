@@ -2,8 +2,6 @@ import pandas as pd
 import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
-import time
-import numpy as np
 
 class ReportExcel:
     """crear fichero excel"""

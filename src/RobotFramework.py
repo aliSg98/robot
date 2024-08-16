@@ -1,14 +1,9 @@
 from robocorp.tasks import task
 from robocorp import browser
 from RPA.HTTP import HTTP
-from RPA.Tables import Tables
 import csv
 from RPA.PDF import PDF
-from RPA.Archive import Archive
-from RPA.Browser import Browser
 import time
-import sys
-import os
 from dotenv import load_dotenv
 class RobotFramework():
     def __init__(self,url,url_orders,name_robot,numRobots,logger,excel,database):
@@ -47,7 +42,7 @@ class RobotFramework():
                 screenshot = self.screenshot_robot(order_number)
                 time.sleep(1)                
                 self.screenshot_to_pdf(screenshot, pdf_file, order_number)
-                time.sleep(1)                               
+                time.sleep(1)                        
         except Exception:
                 print("Error al crear el robot")
                 self.logger.setMessage("Error al crear el robot", "error")

@@ -3,10 +3,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-from decouple import config
-import ssl
-import os
-from dotenv import load_dotenv
 
 class Email:
     def __init__(self, receiver_email, excel_file, log_file, subject):
@@ -18,7 +14,6 @@ class Email:
 
 
     def send_email(self):
-        #load_dotenv(r"C:\Users\nasudre\Desktop\Robot\ENV\.env")
         sender_email = 'alisopra98@gmail.com'
         password = 'llsm sclh rniw iylm'
         body = "Log y excel adjuntos"
